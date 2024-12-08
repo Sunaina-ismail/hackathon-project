@@ -4,10 +4,10 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
 const Bestair = () => {
   const shoes = [
-    { id: 1, src: "/bestair-1.png", name: "Nike Max Air Pulse", price: "₹ 13 995", description: "Women's shoes" },
-    { id: 2, src: "/bestair-1.png", name: "Nike Max Air Pulse", price: "₹ 14 999", description: "Men's shoes" },
-    { id: 3, src: "/bestair-1.png", name: "Nike Max Air Pulse", price: "₹ 11 495", description: "Men's shoes" },
-    { id: 4, src: "/bestair-2.png", name: "Nike Max Air Pulse", price: "₹ 9 995", description: "Men's shoes" },
+    { id: 1, src: "/bestair-1.png", name: "Nike Max Air Pulse", price: "₹ 13 995", description: "Womens shoes" },
+    { id: 2, src: "/bestair-1.png", name: "Nike Max Air Pulse", price: "₹ 14 999", description: "Mens shoes" },
+    { id: 3, src: "/bestair-1.png", name: "Nike Max Air Pulse", price: "₹ 11 495", description: "Mens shoes" },
+    { id: 4, src: "/bestair-2.png", name: "Nike Max Air Pulse", price: "₹ 9 995", description: "Mens shoes" },
   ];
 
   return (

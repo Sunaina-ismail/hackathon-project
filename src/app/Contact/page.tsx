@@ -59,10 +59,10 @@ const Contactpage = () => {
             <p>You can use any accepted credit card to pay for your SNKRS order.</p>
           </div>
           <div className="mb-6">
-            <h4 className="text-lg font-bold mb-2">Why don't I see Apple Pay as an option?</h4>
+            <h4 className="text-lg font-bold mb-2">Why don&apos;t I see Apple Pay as an option?</h4>
             <p>
-              To see Apple Pay as an option in the Nike App or on Nike.com, you'll need to use a compatible Apple device running the
-              latest OS, be signed in to your iCloud account and have a supported card in your Wallet. Additionally, you'll need to use
+              To see Apple Pay as an option in the Nike App or on Nike.com, you&apos;ll need to use a compatible Apple device running the
+              latest OS, be signed in to your iCloud account and have a supported card in your Wallet. Additionally, you&apos;ll need to use
               Safari to use Apple Pay on Nike.com.
             </p>
           </div>

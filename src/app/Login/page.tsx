@@ -28,7 +28,7 @@ const Login = () => {
             </span>
           </div>
         </div>
-        <p className="text-[#8D8D8D] text-center pb-6">By logging in, you agree to Nike's <Link className="underline" href="#">Privacy Policy</Link> and <Link className="underline" href="#">Terms of Use</Link>.</p>
+        <p className="text-[#8D8D8D] text-center pb-6">By logging in, you agree to Nike&apos;s <Link className="underline" href="#">Privacy Policy</Link> and <Link className="underline" href="#">Terms of Use</Link>.</p>
         <button
           type="submit"
           className="bg-black   text-white rounded-sm py-3 hover:bg-gray-700 transition duration-200"
