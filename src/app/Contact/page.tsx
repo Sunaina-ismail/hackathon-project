@@ -7,9 +7,9 @@ import { GiParachute } from 'react-icons/gi';
 
 const Contactpage = () => {
   return (
-    <div className='flex flex-col items-center bg-gray-50 min-h-screen'>
+    <div className='flex flex-col items-center py-10 bg-gray-50 min-h-screen'>
       {/* Heading Section */}
-      <h2 className='uppercase text-xl font-bold mt-8'>Get Help</h2>
+      <h2 className='uppercase text-xl font-bold py-20'>Get Help</h2>
 
      
       <div className="flex px-4 py-3 rounded-md w-[90%] md:w-[30%] border-2 border-text-secondary-gray mt-4 justify-between items-center">

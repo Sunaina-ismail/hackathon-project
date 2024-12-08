@@ -32,7 +32,7 @@ const Header = () => {
     <Link href="/Contact">Help</Link>
     <span>|</span>
     <Link href={"/Joinus"}> <span>Join us</span></Link>
-    
+    <span>|</span>
     <Link href={"/Login"}>sign In</Link>
   </div>
 </div>

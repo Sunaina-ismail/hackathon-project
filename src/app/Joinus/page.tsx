@@ -4,14 +4,14 @@ import { SiNike } from "react-icons/si";
 
 const Joinus = () => {
   return (
-    <div className="container mx-auto flex flex-col items-center py-10 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+    <div className="container mx-auto flex flex-col items-center py-32 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
       {/* Logo Section */}
-      <div className="pb-5">
+      <div className="pb-6">
         <SiNike className="text-black" size={40} />
       </div>
-      <h2 className="uppercase text-center font-bold text-lg sm:text-xl md:text-2xl pb-5">BECOME A NIKE MEMBER</h2>
+      <h2 className="uppercase text-center font-bold text-lg sm:text-xl md:text-2xl pb-2">BECOME A NIKE MEMBER</h2>
       
-      <p className=" sm:w-30 md:w-75 lg:w-80 text-center text-[#8D8D8D] pb-5 text-sm sm:text-lg">
+      <p className=" sm:w-30 md:w-75 lg:w-80 text-center text-[#8D8D8D] pb-2 text-sm sm:text-lg">
         Create your Nike Member profile and get first access to the very best of Nike products, inspiration, and community.
       </p>
 

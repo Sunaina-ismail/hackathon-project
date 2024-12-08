@@ -5,7 +5,7 @@ import { SiNike } from "react-icons/si";
 
 const Login = () => {
   return (
-    <div className="flex flex-col items-center py-10">
+    <div className="flex flex-col items-center py-20">
     <div className="pb-5">
         <SiNike className="text-black" size={40} />
       </div>
