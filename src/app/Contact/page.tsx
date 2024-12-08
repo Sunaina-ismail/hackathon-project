@@ -33,7 +33,7 @@ const Contactpage = () => {
           <ul className="list-disc pl-5 mb-6 space-y-2">
             <li>Visa, Mastercard, Diners Club, Discover, American Express, Visa Electron, Maestro</li>
             <li>
-              If you enter your PAN information at checkout, you'll be able to pay for your order with PayTM or a local credit or debit card.
+              If you enter your PAN information at checkout, you&apos;ll be able to pay for your order with PayTM or a local credit or debit card.
             </li>
             <li>Apple Pay</li>
           </ul>
@@ -51,7 +51,7 @@ const Contactpage = () => {
 
           <div className="mb-6">
             <h4 className="text-lg font-bold mb-2">Can I pay for my order with multiple methods?</h4>
-            <p>No, payment for Nike orders can't be split between multiple payment methods.</p>
+            <p>No, payment for Nike orders can&apos;t be split between multiple payment methods.</p>
           </div>
 
           <div className="mb-6">
