@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# E-Commerce Website UI
 
-## Getting Started
+An intuitive and responsive e-commerce platform UI designed to provide an exceptional shopping experience. This project includes a fully functional UI for a variety of pages such as the home page, product details, cart, wishlist, signup, billing, contact, and about us. The platform supports dynamic features like adding/removing items in the cart using React's `useState`.
 
-First, run the development server:
+## Project Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Home Page**: Showcases flash sales, best-selling products, and categorized listings.
+- **Product Details Page**: Provides detailed information about individual products.
+- **Cart Functionality**: Add, remove, and adjust quantities of items in the cart.
+- **Wishlist**: Save your favorite products for future reference.
+- **Signup Page**: Secure user registration interface.
+- **Billing Page**: Overview and summary of the checkout process.
+- **Contact Page**: Allows users to reach out for support or inquiries.
+- **About Us Page**: Highlights the story and mission of the e-commerce platform.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Steps to Run the Project Locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+Ensure that you have the following installed on your system:
+- **Node.js** (latest LTS version recommended)
+- A package manager like **npm** or **yarn**
 
-To learn more about Next.js, take a look at the following resources:
+### Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Sunaina-ismail/hackathon-project.git
+   cd <hackathon-project>
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+### Running the Project Locally
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Run the Development Server**:
+   ```bash
+   npm run dev
+   ```
+   This will start the server on `http://localhost:3000`. Open this URL in your browser to view the application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Build for Production**:
+   To create an optimized build for deployment:
+   ```bash
+   npm run build
+   ```
+
+5. **Start the Production Server**:
+   After building the project:
+   ```bash
+   npm start
+   ```
+
+---
+
+## Deployment
+
+### Steps to Deploy
+
+1. **Build the Application**:
+   Ensure the application is optimized for deployment by running:
+   ```bash
+   npm run build
+   ```
+
+2. **Choose a Hosting Service**:
+   Deploy the built files to a hosting platform like **Vercel**, **Netlify**, or any other platform that supports Next.js.
+
+3. **Configure Your Domain**:
+   Add your deployment URL in the project configuration if needed.
+
+### Live Deployment URL
+
+The live version of this project is deployed at:
+[Deployment URL]
+<https://hackathon-project-sunaina-ismails-projects.vercel.app/>
+
+---
+
+## Technologies Used
+
+- **React.js**: For building the UI components.
+- **Next.js**: For server-side rendering and routing.
+- **Tailwind CSS**: For responsive and modern styling.
+- **React Icons**: For adding scalable vector icons.
+
+---
+
+## Folder Structure
+
+- **components/**: Contains reusable UI components.
+- **pages/**: Includes Next.js page routes for Home, About, Cart, Wishlist, etc.
+- **public/**: Stores static assets like images and icons.
+- **styles/**: Contains global styles.
+
+---
+
+Feel free to contribute or customize this project as per your requirements!
