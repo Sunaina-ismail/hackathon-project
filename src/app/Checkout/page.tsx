@@ -138,7 +138,7 @@ export default function Checkout() {
           </div>
         
 
-          <div className="w-[350px]   bg-amber-100 md:h-[663px] md:w-[350px]  sm:w-[450px] py-6">
+          <div className="w-[350px]   md:h-[663px] md:w-[350px]  sm:w-[450px] py-6">
             <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
             <div className="space-y-4">
               <div className="flex text-[#8D8D8D] justify-between">
