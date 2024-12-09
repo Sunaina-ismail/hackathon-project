@@ -36,7 +36,7 @@ const Gearup = () => {
       
 
 
-<div className='hidden lg:grid lg:grid-cols-2 gap-y-6 gap-x-10'>
+<div className='hidden  lg:grid lg:grid-cols-2 gap-y-6 gap-x-10'>
       <div className='flex items-center  gap-y-6 justify-end'>
 <div className='flex items-center gap-x-4'><h5>Shop Men&apos;s</h5> <span className='bg-gray-400 rounded-full p-2'><IoIosArrowBack  size={25}/></span> <span  className='bg-gray-400 rounded-full p-2'><IoIosArrowForward size={25}/></span></div>
       </div>
@@ -47,7 +47,7 @@ const Gearup = () => {
 
 
 
-<div className='grid grid-cols-1  gap-y-6 md:grid-cols-2 gap-x-6 '>
+<div className='grid grid-cols-1 mx-auto  gap-y-6 md:grid-cols-2 gap-x-6 '>
   <div className='grid grid-cols-1  gap-y-6 sm:grid-cols-2'>
       {gearupdata1.map((data,index)=>(
     <div key={index} className='w-[250px] xl:w-[300px] space-y-5'>
