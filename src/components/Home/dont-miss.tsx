@@ -4,14 +4,14 @@ import React from 'react'
 const Dontmiss = () => {
   return (
     <div className='w-full py-4 md:py-8'>
-    {/* Section Title */}
+
     <div className='px-4 md:px-8 py-2 text-base font-medium sm:text-xl md:text-2xl'>
       <p>Don&apos;t Miss</p>
     </div>
 
-    {/* Main Section with Responsive Adjustments */}
+
     <div className='flex flex-col items-center gap-y-6 sm:gap-y-8 md:gap-y-8'>
-      {/* Responsive Image */}
+  
       <div className="w-full max-w-[1200px]">
         <Image
           src={"/miss-img.png"}
@@ -22,7 +22,7 @@ const Dontmiss = () => {
         />
       </div>
       
-      {/* Heading with Responsive Text */}
+      
       <h1 className="text-xl sm:text-xl md:text-4xl font-semibold text-center leading-tight">
       FLIGHT ESSENTIALS
       </h1>

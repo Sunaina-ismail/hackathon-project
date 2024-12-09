@@ -32,7 +32,7 @@ const Bestair = () => {
         </div>
       </div>
 
-      {/* Shoe images container with reduced vertical spacing */}
+      
       <div className="flex flex-row flex-wrap gap-4 px-4 md:px-6 sm:px-8 lg:px-4 mt-2">
         {shoes.map((shoe) => (
           <div 

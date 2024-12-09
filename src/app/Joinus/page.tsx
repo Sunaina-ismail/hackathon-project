@@ -5,7 +5,7 @@ import { SiNike } from "react-icons/si";
 const Joinus = () => {
   return (
     <div className="container mx-auto flex flex-col items-center py-32 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
-      {/* Logo Section */}
+     
       <div className="pb-6">
         <SiNike className="text-black" size={40} />
       </div>
@@ -15,38 +15,37 @@ const Joinus = () => {
         Create your Nike Member profile and get first access to the very best of Nike products, inspiration, and community.
       </p>
 
-      {/* Form Section */}
+
       <form action="" className="flex flex-col w-full sm:w-3/4 md:w-2/3 lg:w-1/2 bg-white  p-6 rounded-md">
         
-        {/* Email Input */}
+
         <input
           className="w-full border-[#E5E5E5] rounded-md mb-4 px-4 py-3 border-[2px] placeholder:text-text-secondary-gray"
           type="text"
           placeholder="Email Address"
         />
 
-        {/* Password Input */}
+      
         <input
           className="w-full border-[#E5E5E5] rounded-md mb-4 px-4 py-3 border-[2px] placeholder:text-text-secondary-gray"
           type="text"
           placeholder="Password"
         />
 
-        {/* First Name Input */}
+       
         <input
           className="w-full border-[#E5E5E5] rounded-md mb-4 px-4 py-3 border-[2px] placeholder:text-text-secondary-gray"
           type="text"
           placeholder="First Name"
         />
 
-        {/* Last Name Input */}
+      
         <input
           className="w-full border-[#E5E5E5] rounded-md mb-4 px-4 py-3 border-[2px] placeholder:text-text-secondary-gray"
           type="text"
           placeholder="Last Name"
         />
 
-        {/* Date of Birth Input */}
         <input
           className="w-full border-[#E5E5E5] rounded-md mb-2 px-4 py-3 border-[2px] placeholder:text-text-secondary-gray"
           type="text"
@@ -57,7 +56,7 @@ const Joinus = () => {
           Get a Nike Member Reward every year on your Birthday.
         </p>
 
-        {/* Country Select */}
+        
         <select
           className="w-full border-[#E5E5E5] text-[#8D8D8D] rounded-md mb-2 px-4 py-3 border-[2px]"
           name=""
@@ -80,13 +79,13 @@ const Joinus = () => {
           </option>
         </select>
 
-        {/* Gender Selection */}
+     
         <div className="flex flex-row  gap-5 text-[#8D8D8D] mt-3 ">
           <div className="border-[#E5E5E5] rounded-md py-4 border-[2px] w-full sm:w-1/2 text-center text-text-secondary-gray">Male</div>
           <div className="border-[#E5E5E5] rounded-md py-4 border-[2px] w-full sm:w-1/2 text-center text-text-secondary-gray">Female</div>
         </div>
 
-        {/* Remember Me Checkbox */}
+      
         <div className="flex justify-between text-[#8D8D8D] items-center py-5">
           <div>
             <input type="checkbox" id="remember" />
@@ -96,7 +95,7 @@ const Joinus = () => {
           </div>
         </div>
 
-        {/* Terms and Conditions Text */}
+      
         <p className="text-[#8D8D8D] text-center pb-6 text-sm">
           By creating an account, you agree to Nike&apos;s{" "}
           <Link className="underline" href="#">
@@ -108,7 +107,7 @@ const Joinus = () => {
           </Link>.
         </p>
 
-        {/* Submit Button */}
+     
         <button
           type="submit"
           className="bg-black text-white rounded-sm py-2 px-3 md:py-3 md:px-6 hover:bg-gray-700 transition duration-200 "
@@ -116,7 +115,7 @@ const Joinus = () => {
           JOIN US
         </button>
 
-        {/* Already a Member? */}
+       
         <p className="text-center pt-3 text-sm">
           <span className="text-text-secondary-gray">Already a Member? </span>
           <span className="underline">Join Us.</span>

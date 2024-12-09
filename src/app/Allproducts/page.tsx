@@ -282,7 +282,7 @@ export default function Allproduct() {
         </div>
       </div>
 
-      {/* Main Content */}
+      
       <div className="flex flex-col md:flex-row flex-1 relative">
         {/* Sidebar */}
         <aside
@@ -364,7 +364,7 @@ export default function Allproduct() {
           </div>
         </aside>
 
-        {/* Products Section */}
+    
         <main className="w-full md:w-3/4 p-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {products.map((product, index) => (
@@ -372,7 +372,7 @@ export default function Allproduct() {
                 key={index}
                 className=" p-4 text-center  "
               >
-                {/* Product Image */}
+               
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -380,15 +380,15 @@ export default function Allproduct() {
                   height={300}
                   className=" mb-2"
                 />
-                {/* Tag */}
+           
                 <span className="block text-sm font-bold text-yellow-600 mb-2">
                   {product.tag}
                 </span>
-                {/* Product Name */}
+               
                 <h3 className="font-semibold text-lg mb-1">{product.name}</h3>
-                {/* Category */}
+            
                 <p className="text-sm text-gray-500 mb-2">{product.category}</p>
-                {/* Price */}
+               
                 <p className="font-bold text-gray-800">{product.price}</p>
               </div>
             ))}

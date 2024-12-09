@@ -7,10 +7,9 @@ export default function Cart() {
   return (
     <div className="min-h-screen py-24 px-3 sm:p-6 md:p-9 lg:p-32">
       <div className="max-w-[1152px] mx-auto py-4 flex flex-col lg:flex-row">
-      
-        {/* Main Bag Section */}
+ 
         <div className="w-full lg:w-2/3">
-          {/* Free Delivery Info */}
+        
           <div className="text-gray-600 text-sm mb-4 border bg-[#F7F7F7] px-2 py-3 md:py-2 md:px-3 sm:py-3 sm:px-4">
             Free Delivery{" "}
             <div className="flex flex-wrap sm:flex-nowrap">
@@ -70,7 +69,7 @@ export default function Cart() {
           </div>
         </div>
   
-        {/* Summary Section */}
+       
         <div className="w-full lg:w-1/3 bg-white px-4 sm:px-6 md:px-8 shadow-sm rounded-md mt-4 lg:mt-0">
           <h2 className="text-lg sm:text-xl md:text-2xl font-medium mb-3">Summary</h2>
           <div className="mt-2">

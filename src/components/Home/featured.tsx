@@ -5,14 +5,14 @@ import React from 'react'
 const Featured = () => {
   return (
     <div >
-      {/* Section Title */}
+     
       <div className='px-4 md:px-8 py-2 text-base font-medium sm:text-xl md:text-2xl'>
         <p>Featured</p>
       </div>
 
-      {/* Main Section with Responsive Adjustments */}
+     
       <div className='flex flex-col items-center gap-y-6 sm:gap-y-8 md:gap-y-8'>
-        {/* Responsive Image */}
+      
         <div className="w-full max-w-[1200px]">
           <Image
             src={"/feature-img.png"}
@@ -23,7 +23,7 @@ const Featured = () => {
           />
         </div>
         
-        {/* Heading with Responsive Text */}
+        
         <h1 className="text-lg sm:text-xl md:text-4xl font-semibold text-center leading-tight">
           STEP INTO WHAT FEELS GOOD
         </h1>

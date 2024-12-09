@@ -18,12 +18,7 @@ export default function Home() {
   <Gearup/>
   <Dontmiss/>
   <Essential/>   
-
  
-
-
-
-
   </div>
 
   );

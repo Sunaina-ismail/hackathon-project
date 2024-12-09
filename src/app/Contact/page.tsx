@@ -21,7 +21,7 @@ const Contactpage = () => {
         <AiOutlineSearch className="text-gray-600 w-6 h-6" />
       </div>
 
-      {/* Main Content Section */}
+    
       <div className="grid grid-cols-1 md:grid-cols-12 px-4 md:px-8 py-8  text-gray-800 w-full">
    
         <div className='col-span-12 md:col-span-9 border-r-[1.3px] md:border-r-0 pr-4 md:pr-8 border-text-secondary-gray'>

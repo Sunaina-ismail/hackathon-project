@@ -6,9 +6,9 @@ import { IoLocationOutline } from 'react-icons/io5'
 const Footer = () => {
   return (
     <footer className="bg-black w-full text-white py-10  px-6">
-      {/* Main Grid Section */}
+
       <div className="container mx-auto lg:grid lg:grid-cols-4 lg:gap-8">
-        {/* Column 1 */}
+        
         <div className="mb-4 sm:mb-0">
           <h3 className="text-sm font-semibold mb-4">FIND A STORE</h3>
           <ul className="space-y-2 text-sm">
@@ -18,7 +18,6 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 2 */}
         <div className="mb-4 sm:mb-0">
           <h3 className="text-sm font-semibold mb-4">GET HELP</h3>
           <ul className="space-y-2 text-sm">
@@ -31,7 +30,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 3 */}
+        
         <div className="mb-4 sm:mb-0">
           <h3 className="text-sm font-semibold mb-4">ABOUT NIKE</h3>
           <ul className="space-y-2 text-sm">
@@ -42,7 +41,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 4 - Social Media Icons */}
+   
         <div className="flex justify-start lg:justify-end items-start gap-4">
           <FaTwitter className="text-lg cursor-pointer hover:text-gray-400" />
           <FaFacebook className="text-lg cursor-pointer hover:text-gray-400" />
@@ -51,16 +50,15 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Section like Terms of Sale, Privacy Policy, etc. */}
+    
       <div className="mt-8 flex flex-wrap justify-between items-center text-xs text-gray-400 lg:flex-nowrap lg:gap-4">
-        {/* Left Bottom Section.. Copyright */}
+
         <div className="flex items-center gap-2">
           <IoLocationOutline className="text-sm" />
           <p>India</p>
           <p>© 2023 Nike, Inc. All Rights Reserved</p>
         </div>
 
-        {/* Right Bottom Section */}
         <div className="flex flex-wrap gap-4 mt-4 lg:mt-0 lg:justify-end sm:justify-start">
           <Link href="#" className="hover:underline">Guides</Link>
           <Link href="#" className="hover:underline">Terms of Sale</Link>
