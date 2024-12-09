@@ -6,25 +6,25 @@ import { FaBox } from "react-icons/fa";
 export default function Checkout() {
   return (
     <div>
-      <div className="min-h-screen py-32 px-10 sm:py-20 sm:px-30 md:py-24 md:px-40 font-sans">
+      <div className="min-h-screen py-32 sm:px-10 sm:py-20 sm:px-30 md:py-24 md:px-40 font-sans">
         <div className="w-full mx-auto grid lg:grid-cols-3 md:gap-6 md:px-6 md:py-8">
           <div className="lg:col-span-2">
-            <h1 className="text-2xl font-medium mb-4">
+            <h1 className="text-xl md:text-2xl font-medium mb-4">
               How would you like to get your order?
             </h1>
-            <p className="text-sm text-gray-600 w-[500px] mb-6">
+            <p className="text-sm text-gray-600 md:w-[500px] mb-6">
               Customs regulations for India require a copy of the recipient&apos;s KYC. The address on the KYC needs to match the shipping address. Our courier will contact you via SMS/email to obtain a copy of your KYC. The KYC will be stored securely and used solely for the purpose of clearing customs (including sharing it with customs officials) for all orders and returns. If your KYC does not match your shipping address, please click the link for more information.
               <a href="#" className="text-black underline">
                 Learn More
               </a>
             </p>
 
-            <button className="w-[500px] flex justify-between items-center  border-2 border-black py-6 rounded-xl mb-8">
+            <button className="md:w-[500px] flex justify-between items-center  border-2 border-black py-6 rounded-xl mb-8">
               <span className="text-lg font-medium flex items-center"> <span className="px-4"><FaBox/></span>Deliver It</span>
            
             </button>
 
-            <div className="w-[500px] mb-8">
+            <div className="md:w-[500px] mb-8">
               <h2 className="text-lg font-semibold mb-4">Enter your name and address:</h2>
               <form className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
@@ -90,7 +90,7 @@ export default function Checkout() {
               </form>
             </div>
 
-            <div className=" w-[500px] mb-8">
+            <div className=" md:w-[500px] mb-8">
               <h2 className="text-lg font-semibold mb-4">What&apos;s your contact information?</h2>
               <form className="space-y-4">
                 <input
@@ -106,7 +106,7 @@ export default function Checkout() {
               </form>
             </div>
 
-            <div className=" w-[500px] mb-8">
+            <div className=" md:w-[500px] mb-8">
               <h2 className="text-lg font-semibold mb-4">What&apos;s your PAN?</h2>
               <input
                 type="text"
@@ -122,7 +122,7 @@ export default function Checkout() {
                   Save PAN details to Nike Profile
                 </label>
               </div>
-              <div className="flex w-[400] items-center space-x-2">
+              <div className="flex md:w-[400] items-center space-x-2">
                 <input type="checkbox" id="consent" />
                 <label typeof="consent" className="text-sm">
                   I have read and consent to Nike processing my information in
@@ -138,7 +138,7 @@ export default function Checkout() {
           </div>
         
 
-          <div className="w-[300px] py-6">
+          <div className=" bg-amber-100 md:h-[663px] md:w-[300px] py-6">
             <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
             <div className="space-y-4">
               <div className="flex text-[#8D8D8D] justify-between">
@@ -201,7 +201,7 @@ export default function Checkout() {
        
     </div>
     <footer className="bg-black text-white text-sm py-4">
-          <div className=" mx-auto flex gap-6 items-center px-6">
+          <div className=" mx-auto flex gap-6 items-center md:px-6">
             <span className="flex items-center"><IoLocationSharp/>India</span>
           <p>&copy; 2023 Nike, Inc. All Rights Reserved</p>
           <div className="flex space-x-2">
