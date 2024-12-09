@@ -6,17 +6,23 @@ import Featured from "@/components/Home/featured";
 import Gearup from "@/components/Home/gearup";
 import Hero from "@/components/Home/hero";
 
+
+
+
 export default function Home() {
   return (
 <div>
-
- 
-  <Hero/>
+ <Hero/>
   <Bestair/>
   <Featured/>
   <Gearup/>
   <Dontmiss/>
-  <Essential/>
+  <Essential/>   
+
+ 
+
+
+
 
   </div>
 

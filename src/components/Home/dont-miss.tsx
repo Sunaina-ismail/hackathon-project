@@ -5,7 +5,7 @@ const Dontmiss = () => {
   return (
     <div className='w-full py-4 md:py-8'>
     {/* Section Title */}
-    <div className='px-4 md:px-8 py-2 text-lg font-medium sm:text-xl md:text-2xl'>
+    <div className='px-4 md:px-8 py-2 text-base font-medium sm:text-xl md:text-2xl'>
       <p>Don&apos;t Miss</p>
     </div>
 

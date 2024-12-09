@@ -3,7 +3,7 @@ import React from 'react';
 
 const Hero = () => {
   return (
-    <div className="w-full">
+    <div className="w-full py-28">
       {/* Top Section */}
       <div className="flex flex-col items-center justify-center space-y-[3px] bg-stone-300 py-1">
         <p className="font-medium text-sm sm:text-base md:text-lg">Hello Nike App</p>
@@ -39,11 +39,11 @@ const Hero = () => {
         {/* Buttons */}
         <div className="flex flex-row items-center justify-center gap-y-4 sm:gap-y-0 gap-x-4 px-4 sm:px-0">
           {/* Notify Me Button */}
-          <button className="px-5 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition duration-200">
+          <button className="px-3 py-2 sm:px-4 sm:py-2 md:px-8 md:py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition duration-200">
             Notify Me
           </button>
           {/* Shop Air Max Button */}
-          <button className="px-5 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition duration-200">
+          <button className="px-3 py-2 sm:px-4 sm:py-2 md:px-8 md:py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition duration-200">
             Shop Air Max
           </button>
         </div>

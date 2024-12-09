@@ -11,7 +11,7 @@ const Essential = () => {
   return (
     <div className="py-6">
       {/* Heading Section */}
-      <div className="px-4 md:px-8 py-2 text-lg font-medium sm:text-xl md:text-2xl">
+      <div className="px-4 md:px-8 py-2 text-base font-medium sm:text-xl md:text-2xl">
         <p>The Essentials</p>
       </div>
 

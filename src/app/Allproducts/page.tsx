@@ -262,7 +262,7 @@ export default function Allproduct() {
   const [isPriceOpen, setPriceOpen] = useState(true);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen py-32 flex flex-col">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row justify-between items-center px-4 py-4 border-b border-gray-300">
         <h1 className="text-lg font-bold">New (500)</h1>

@@ -15,8 +15,8 @@ const Bestair = () => {
       {/* Header Section */}
       <div className="flex justify-between items-end md:w-full px-4 md:px-8 mb-4 md:mb-6">
         <div className="flex justify-between items-start gap-x-4 w-[60%] sm:w-[70%] md:w-[50%]">
-          <div className="flex flex-col justify-between px-4 space-y-2 md:space-y-6">
-            <h2 className="font-medium text-lg sm:text-2xl md:text-xl">Best of Air Max</h2>
+          <div className="flex flex-col justify-between px-4 space-y-2 md:space-y-4">
+            <h2 className="font-medium text-base sm:text-2xl md:text-xl">Best of Air Max</h2>
           </div>
         </div>
 

@@ -4,9 +4,9 @@ import React from 'react'
 
 const Featured = () => {
   return (
-    <div>
+    <div >
       {/* Section Title */}
-      <div className='px-4 md:px-8 py-2 text-lg font-medium sm:text-xl md:text-2xl'>
+      <div className='px-4 md:px-8 py-2 text-base font-medium sm:text-xl md:text-2xl'>
         <p>Featured</p>
       </div>
 
@@ -24,7 +24,7 @@ const Featured = () => {
         </div>
         
         {/* Heading with Responsive Text */}
-        <h1 className="text-xl sm:text-xl md:text-4xl font-semibold text-center leading-tight">
+        <h1 className="text-lg sm:text-xl md:text-4xl font-semibold text-center leading-tight">
           STEP INTO WHAT FEELS GOOD
         </h1>
 
@@ -34,9 +34,10 @@ const Featured = () => {
         
   
         <div className="flex items-center gap-y-4 gap-x-4 ">
-         <Link href={"/Productdetails"}></Link> <button className="px-3 sm:px-5 py-2 sm:py-3 md:px-6 md:py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition">
+         <Link href={"/Productdetails"}> <button className="px-3 sm:px-5 py-2 sm:py-3 md:px-6 md:py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition">
             Find Your Shoe
           </button>
+          </Link>
         </div>
       </div>
     </div>
