@@ -24,7 +24,7 @@ export default function Checkout() {
            
             </button>
 
-            <div className="w-[400px]  sm:w-[450px]  md:w-[500px] mb-8">
+            <div className="w-[350px]  sm:w-[450px]  md:w-[500px] mb-8">
               <h2 className="text-lg font-semibold mb-4">Enter your name and address:</h2>
               <form className="space-y-4">
                 <div className="grid grid-cols-2 md:gap-4">
@@ -90,7 +90,7 @@ export default function Checkout() {
               </form>
             </div>
 
-            <div className="w-[400px]  sm:w-[450px] md:w-[500px] mb-8">
+            <div className="w-[350px]  sm:w-[450px] md:w-[500px] mb-8">
               <h2 className="text-lg font-semibold mb-4">What&apos;s your contact information?</h2>
               <form className="space-y-4">
                 <input
@@ -131,14 +131,14 @@ export default function Checkout() {
               </div>
             </div>
 
-            <button className="w-[400px]  sm:w-[450px]  md:w-[500px] bg-[#d9d9d9] text-[#8D8D8D] py-3 rounded-full font-semibold">
+            <button className="w-[350px]  sm:w-[450px]  md:w-[500px] bg-[#d9d9d9] text-[#8D8D8D] py-3 rounded-full font-semibold">
               Continue
             </button>
 
           </div>
         
 
-          <div className="w-[400px]   bg-amber-100 md:h-[663px] md:w-[350px]  sm:w-[450px] py-6">
+          <div className="w-[350px]   bg-amber-100 md:h-[663px] md:w-[350px]  sm:w-[450px] py-6">
             <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
             <div className="space-y-4">
               <div className="flex text-[#8D8D8D] justify-between">
