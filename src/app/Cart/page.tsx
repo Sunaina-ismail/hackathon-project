@@ -1,4 +1,4 @@
-// 
+ 
 
 import Link from "next/link";
 import Image from "next/image";
@@ -18,9 +18,8 @@ export default function Cart() {
             </div>
           </div>
 
-          <h5 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3">Bag</h5>
+          <h5 className="text-lg sm:text-xl md:text-2xl font-bold mb-3">Bag</h5>
        
-          {/* Item 1 */}
           <div className="border-b border-gray-300 py-2 flex items-start sm:py-3 md:py-4">
             <Image
               src="/gearup-1.png"
@@ -44,7 +43,7 @@ export default function Cart() {
             </div>
           </div>
   
-          {/* Item 2 */}
+         
           <div className="border-b border-gray-300 py-2 flex items-start sm:py-3 md:py-4">
             <Image
               src="/shoe-2.png"
@@ -70,8 +69,8 @@ export default function Cart() {
         </div>
   
        
-        <div className="w-full lg:w-1/3 bg-white px-4 sm:px-6 md:px-8 shadow-sm rounded-md mt-4 lg:mt-0">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-medium mb-3">Summary</h2>
+        <div className="w-full lg:w-1/3  px-4 sm:px-6 md:px-8  mt-10 lg:mt-0">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3">Summary</h2>
           <div className="mt-2">
             <div className="flex justify-between py-1 sm:py-2 md:py-2.5">
               <span className="text-sm sm:text-base md:text-base">Subtotal</span>

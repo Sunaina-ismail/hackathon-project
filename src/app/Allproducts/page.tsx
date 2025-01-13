@@ -237,8 +237,6 @@ export default function Allproduct() {
       price: '₹ 4,995.00',
       image: '/rectangle (30).png',
     },
-   
-   
   ];
 
   const categories = [
@@ -259,11 +257,11 @@ export default function Allproduct() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isGenderOpen, setGenderOpen] = useState(true);
   const [isKidsOpen, setKidsOpen] = useState(true);
-  const [isPriceOpen, setPriceOpen] = useState(true);
+ 
 
   return (
     <div className="min-h-screen py-32 flex flex-col">
-      {/* Page Header */}
+    
       <div className="flex flex-col sm:flex-row justify-between items-center px-4 py-4 border-b border-gray-300">
         <h1 className="text-lg font-bold">New (500)</h1>
         <div className="flex space-x-4 mt-2 sm:mt-0">
@@ -282,21 +280,22 @@ export default function Allproduct() {
         </div>
       </div>
 
-      
       <div className="flex flex-col md:flex-row flex-1 relative">
-        {/* Sidebar */}
+        
         <aside
-          className={`fixed md:static bg-white z-20 w-3/4 md:w-1/4 p-4 border-r border-gray-300 transition-transform duration-300 ${
+          className={`absolute sm:fixed md:static bg-white z-40 w-3/4 md:w-1/4 p-4 border-r border-gray-300 transition-transform duration-300 ${
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
           } md:translate-x-0`}
         >
-          <ul className="space-y-2">
-            {categories.map((category, index) => (
-              <li key={index} className="cursor-pointer hover:underline">
-                {category}
-              </li>
-            ))}
-          </ul>
+          <div className="h-64 overflow-y-auto"> 
+            <ul className="space-y-2">
+              {categories.map((category, index) => (
+                <li key={index} className="cursor-pointer hover:underline">
+                  {category}
+                </li>
+              ))}
+            </ul>
+          </div>
           <hr className="my-4" />
           <div>
             <h3
@@ -340,55 +339,28 @@ export default function Allproduct() {
                 </li>
               </ul>
             )}
-          </div>
-          <hr className="my-4" />
-          <div>
-            <h3
-              className="font-semibold flex justify-between items-center cursor-pointer"
-              onClick={() => setPriceOpen(!isPriceOpen)}
-            >
-              Shop By Price <span>{isPriceOpen ? '▲' : '▼'}</span>
-            </h3>
-            {isPriceOpen && (
-              <ul className="mt-2 space-y-2">
-                <li>
-                  <input type="checkbox" id="under-2500" />{' '}
-                  <label htmlFor="under-2500">Under ₹ 2,500.00</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="2500-5000" />{' '}
-                  <label htmlFor="2500-5000">₹ 2,501.00 - ₹ 5,000.00</label>
-                </li>
-              </ul>
-            )}
-          </div>
+          </div>       
         </aside>
 
-    
         <main className="w-full md:w-3/4 p-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-4">
             {products.map((product, index) => (
               <div
                 key={index}
-                className=" p-4 text-center  "
+                className=" p-2   "
               >
-               
                 <Image
                   src={product.image}
                   alt={product.name}
-                  width={300}
-                  height={300}
+                  width={400}
+                  height={400}
                   className=" mb-2"
                 />
-           
                 <span className="block text-sm font-bold text-yellow-600 mb-2">
                   {product.tag}
                 </span>
-               
                 <h3 className="font-semibold text-lg mb-1">{product.name}</h3>
-            
                 <p className="text-sm text-gray-500 mb-2">{product.category}</p>
-               
                 <p className="font-bold text-gray-800">{product.price}</p>
               </div>
             ))}

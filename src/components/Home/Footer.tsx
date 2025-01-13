@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="container mx-auto lg:grid lg:grid-cols-4 lg:gap-8">
         
         <div className="mb-4 sm:mb-0">
-          <h3 className="text-sm font-semibold mb-4">FIND A STORE</h3>
+          <h3 className="text-base font-semibold mb-4">FIND A STORE</h3>
           <ul className="space-y-2 text-sm">
             <li><Link href="#" className="hover:underline">Become Link Member</Link></li>
             <li><Link href="#" className="hover:underline">Sign Up for Email</Link></li>
@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
 
         <div className="mb-4 sm:mb-0">
-          <h3 className="text-sm font-semibold mb-4">GET HELP</h3>
+          <h3 className="text-base font-semibold mb-4">GET HELP</h3>
           <ul className="space-y-2 text-sm">
             <li><Link href="#" className="hover:underline">Order Status</Link></li>
             <li><Link href="#" className="hover:underline">Delivery</Link></li>
@@ -32,7 +32,7 @@ const Footer = () => {
 
         
         <div className="mb-4 sm:mb-0">
-          <h3 className="text-sm font-semibold mb-4">ABOUT NIKE</h3>
+          <h3 className="text-base font-semibold mb-4">ABOUT NIKE</h3>
           <ul className="space-y-2 text-sm">
             <li><Link href="#" className="hover:underline">News</Link></li>
             <li><Link href="#" className="hover:underline">Careers</Link></li>

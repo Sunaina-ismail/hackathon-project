@@ -3,14 +3,14 @@ import React from 'react'
 
 const Dontmiss = () => {
   return (
-    <div className='w-full py-4 md:py-8'>
+    <div className='w-full py-4 px-4 md:px-10 md:py-8'>
 
-    <div className='px-4 md:px-8 py-2 text-base font-medium sm:text-xl md:text-2xl'>
+    <div className='   pb-4 font-semibold  text-2xl'>
       <p>Don&apos;t Miss</p>
     </div>
 
 
-    <div className='flex flex-col items-center gap-y-6 sm:gap-y-8 md:gap-y-8'>
+    <div className='flex flex-col items-center gap-y-6  md:gap-y-5'>
   
       <div className="w-full max-w-[1200px]">
         <Image
@@ -18,16 +18,16 @@ const Dontmiss = () => {
           alt='miss-img'
           width={1200} 
           height={500}
-          className="w-full h-auto sm:max-w-[1000px] md:max-w-[1200px]"
+          className="w-full h-auto "
         />
       </div>
       
       
-      <h1 className="text-xl sm:text-xl md:text-4xl font-semibold text-center leading-tight">
+      <h1 className="text-xl mt-6 sm:text-xl md:text-4xl font-semibold text-center leading-tight">
       FLIGHT ESSENTIALS
       </h1>
 
-      <p className="text-sm sm:text-base md:text-sm text-center text-gray-600 leading-snug w-4/5 sm:w-3/5 md:w-2/5">
+      <p className="text-lg text-center text-gray-600 leading-snug ">
       Your built-to-last, all-week wears—but with style only Jordan Brand can deliver.
       </p>
       

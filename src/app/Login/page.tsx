@@ -5,11 +5,11 @@ import { SiNike } from "react-icons/si";
 
 const Login = () => {
   return (
-    <div className="flex flex-col  mx-2 md:mx-0 items-center py-28 sm:py-10 md:py-40 sm:px-4">
+    <div className="flex flex-col  mx-2 md:mx-0 items-center py-28  md:py-40 px-6">
       <div className="pb-3 sm:pb-2">
-        <SiNike className="text-black" size={40} />
+        <SiNike className="text-black" size={60} />
       </div>
-      <h2 className="uppercase sm:w-auto md:w-60 text-center font-bold pb-3 sm:text-lg ">
+      <h2 className="sm:w-auto md:w-60  text-center font-bold pb-3 sm:text-xl ">
         YOUR ACCOUNT FOR EVERYTHING NIKE
       </h2>
       <form action="" className="flex flex-col  sm:w-96">

@@ -2,9 +2,11 @@
 import Bestair from "@/components/Home/bestair";
 import Dontmiss from "@/components/Home/dont-miss";
 import Essential from "@/components/Home/essential";
+import EssentialIcons from "@/components/Home/EssentialIcons";
 import Featured from "@/components/Home/featured";
 import Gearup from "@/components/Home/gearup";
 import Hero from "@/components/Home/hero";
+
 
 
 
@@ -18,6 +20,8 @@ export default function Home() {
   <Gearup/>
   <Dontmiss/>
   <Essential/>   
+  <EssentialIcons/>   
+
  
   </div>
 

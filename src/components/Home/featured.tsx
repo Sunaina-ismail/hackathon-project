@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import Link from 'next/link'
+
 import React from 'react'
 
 const Featured = () => {
   return (
-    <div >
+    <div className='py-10 px-4 md:px-10  md:mt-10' >
      
-      <div className='px-4 md:px-8 py-2 text-base font-medium sm:text-xl md:text-2xl'>
+      <div className=' py-4  font-semibold  text-2xl'>
         <p>Featured</p>
       </div>
 
@@ -28,16 +28,16 @@ const Featured = () => {
           STEP INTO WHAT FEELS GOOD
         </h1>
 
-        <p className="text-sm sm:text-base md:text-sm text-center text-gray-600 leading-snug w-4/5 sm:w-3/5 md:w-2/5">
+        <p className="text-lg text-center text-gray-600 leading-snug w-4/5 sm:w-3/5 md:w-2/5">
           Cause everyone should know the feeling of running in that perfect pair.
         </p>
         
   
         <div className="flex items-center gap-y-4 gap-x-4 ">
-         <Link href={"/Productdetails"}> <button className="px-3 sm:px-5 py-2 sm:py-3 md:px-6 md:py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition">
+          <button className="px-3 sm:px-5 py-2 sm:py-3 md:px-6 md:py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition">
             Find Your Shoe
           </button>
-          </Link>
+       
         </div>
       </div>
     </div>

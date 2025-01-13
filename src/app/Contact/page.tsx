@@ -7,9 +7,9 @@ import { GiParachute } from 'react-icons/gi';
 
 const Contactpage = () => {
   return (
-    <div className='flex flex-col items-center py-10 bg-gray-50 min-h-screen'>
-      {/* Heading Section */}
-      <h2 className='uppercase text-xl font-bold py-20'>Get Help</h2>
+    <div className='flex flex-col items-center px-4 pt-28 bg-gray-50 '>
+ 
+      <h2 className='text-3xl font-bold '>Get Help</h2>
 
      
       <div className="flex px-4 py-3 rounded-md w-[90%] md:w-[30%] border-2 border-text-secondary-gray mt-4 justify-between items-center">
@@ -24,7 +24,7 @@ const Contactpage = () => {
     
       <div className="grid grid-cols-1 md:grid-cols-12 px-4 md:px-8 py-8  text-gray-800 w-full">
    
-        <div className='col-span-12 md:col-span-9 border-r-[1.3px] md:border-r-0 pr-4 md:pr-8 border-text-secondary-gray'>
+        <div className='col-span-12 md:col-span-9 md:border-r-gray-300 md:border-r pr-4 md:pr-8 border-text-secondary-gray'>
  
           <h2 className="text-xl md:text-2xl font-bold mb-4">WHAT PAYMENT OPTIONS CAN I USE ON NIKE ORDERS?</h2>
           <p className="mb-4">
@@ -38,28 +38,28 @@ const Contactpage = () => {
             <li>Apple Pay</li>
           </ul>
 
-          {/* FAQs Section */}
+ 
           <h3 className="text-xl font-semibold mb-4">FAQs</h3>
           <div className="mb-6">
-            <h4 className="text-lg font-bold mb-2">Does my card need international purchases enabled?</h4>
+            <h4 className="text-xl font-bold mb-2">Does my card need international purchases enabled?</h4>
             <p>
               Yes, we recommend asking your bank to enable international purchases on your card. You will be notified at checkout if
               international purchases need to be enabled.
             </p>
-            <p className="mt-2 text-sm text-gray-600">Please note, some banks may charge a small transaction fee for international orders.</p>
+            <p className="mt-4 text-sm text-blue-800">(Please note, some banks may charge a small transaction fee for international orders.)</p>
           </div>
 
           <div className="mb-6">
-            <h4 className="text-lg font-bold mb-2">Can I pay for my order with multiple methods?</h4>
+            <h4 className="text-xl font-bold mb-2">Can I pay for my order with multiple methods?</h4>
             <p>No, payment for Nike orders can&apos;t be split between multiple payment methods.</p>
           </div>
 
           <div className="mb-6">
-            <h4 className="text-lg font-bold mb-2">What payment method is accepted for SNKRS orders?</h4>
+            <h4 className="text-xl font-bold mb-2">What payment method is accepted for SNKRS orders?</h4>
             <p>You can use any accepted credit card to pay for your SNKRS order.</p>
           </div>
           <div className="mb-6">
-            <h4 className="text-lg font-bold mb-2">Why don&apos;t I see Apple Pay as an option?</h4>
+            <h4 className="text-xl font-bold mb-2">Why don&apos;t I see Apple Pay as an option?</h4>
             <p>
               To see Apple Pay as an option in the Nike App or on Nike.com, you&apos;ll need to use a compatible Apple device running the
               latest OS, be signed in to your iCloud account and have a supported card in your Wallet. Additionally, you&apos;ll need to use
@@ -67,10 +67,10 @@ const Contactpage = () => {
             </p>
           </div>
         </div>
+       
 
-        {/* Contact Us Section */}
-        <div className="hidden md:block md:col-span-3 p-4  border-l md:border-none space-y-4">
-          <h2 className="uppercase font-bold text-xl text-center">Contact Us</h2>
+        <div className=" md:block md:col-span-3 px-4 py-6 md:py-0  md:border-l-gray-300   space-y-6">
+          <h2 className=" font-bold text-xl text-center">Contact Us</h2>
           <div className="flex flex-col items-center space-y-4 text-center">
             <FaMobileScreenButton className="text-gray-600 w-10 h-10" />
             <p className="font-semibold">000 800 919 0566</p>
