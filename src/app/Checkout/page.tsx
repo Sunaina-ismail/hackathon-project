@@ -150,7 +150,7 @@ export default function Checkout() {
             <div className="space-y-4">
               <div className="flex justify-between text-gray-600">
                 <span>Subtotal</span>
-                <span>₹20,890.00</span>
+                <span>$20,890.00</span>
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>Delivery/Shipping</span>
@@ -159,7 +159,7 @@ export default function Checkout() {
               <hr className="my-4" />
               <div className="flex justify-between text-lg font-semibold">
                 <span>Total</span>
-                <span>₹20,890.00</span>
+                <span>$20,890.00</span>
               </div>
             </div>
             <hr className="mt-4" />
@@ -181,7 +181,7 @@ export default function Checkout() {
                 </p>
                 <p className="text-sm text-gray-500">Qty: 1</p>
                 <p className="text-sm text-gray-500">Size L</p>
-                <p className="text-sm text-gray-500">₹3,895.00</p>
+                <p className="text-sm text-gray-500">$3,895.00</p>
               </div>
             </div>
             <div className="flex items-center space-x-4 mt-4">
@@ -196,7 +196,7 @@ export default function Checkout() {
                 <p className="font-semibold">Nike Air Max 97 SE Men&apos;s Shoes</p>
                 <p className="text-sm text-gray-500">Qty: 1</p>
                 <p className="text-sm text-gray-500">Size UK 8</p>
-                <p className="text-sm text-gray-500">₹16,995.00</p>
+                <p className="text-sm text-gray-500">$16,995.00</p>
               </div>
             </div>
           </div>

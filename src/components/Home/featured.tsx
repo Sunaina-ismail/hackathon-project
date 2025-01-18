@@ -1,7 +1,5 @@
 import Image from 'next/image'
-
 import React from 'react'
-
 const Featured = () => {
   return (
     <div className='py-10 px-4 md:px-10  md:mt-10' >

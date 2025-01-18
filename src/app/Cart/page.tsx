@@ -35,7 +35,7 @@ export default function Cart() {
               <p className="text-xs sm:text-sm md:text-sm text-gray-500">Size: L</p>
             </div>
             <div className="text-right ml-auto">
-              <p className="font-semibold text-sm sm:text-base md:text-lg">₹3,895.00</p>
+              <p className="font-semibold text-sm sm:text-base md:text-lg">$3,895.00</p>
               <div className="flex items-center justify-end space-x-2 sm:space-x-3 md:space-x-4 py-1 sm:py-2">
                 <button className="text-gray-500 hover:text-gray-700 text-sm sm:text-base md:text-lg">❤</button>
                 <button className="text-gray-500 hover:text-gray-700 text-sm sm:text-base md:text-lg">🗑</button>
@@ -59,7 +59,7 @@ export default function Cart() {
               <p className="text-xs sm:text-sm md:text-sm text-gray-500">Size: 8</p>
             </div>
             <div className="text-right ml-auto">
-              <p className="font-semibold text-sm sm:text-base md:text-lg">₹16,895.00</p>
+              <p className="font-semibold text-sm sm:text-base md:text-lg">$16,895.00</p>
               <div className="flex items-center justify-end space-x-2 sm:space-x-3 md:space-x-4 py-1 sm:py-2">
                 <button className="text-gray-500 hover:text-gray-700 text-sm sm:text-base md:text-lg">❤</button>
                 <button className="text-gray-500 hover:text-gray-700 text-sm sm:text-base md:text-lg">🗑</button>
@@ -74,7 +74,7 @@ export default function Cart() {
           <div className="mt-2">
             <div className="flex justify-between py-1 sm:py-2 md:py-2.5">
               <span className="text-sm sm:text-base md:text-base">Subtotal</span>
-              <span className="font-semibold text-sm sm:text-base md:text-lg">₹20,890.00</span>
+              <span className="font-semibold text-sm sm:text-base md:text-lg">$20,890.00</span>
             </div>
             <div className="flex justify-between py-1 sm:py-2 md:py-2.5">
               <span className="text-sm sm:text-base md:text-base">Estimated Delivery & Handling</span>
@@ -83,7 +83,7 @@ export default function Cart() {
             <hr className="my-2" />
             <div className="flex justify-between py-1 sm:py-2 md:py-2.5 font-medium text-lg md:text-base">
               <span>Total</span>
-              <span>₹20,890.00</span>
+              <span>$20,890.00</span>
             </div>
            <Link href={'/Checkout'}> <button className="mt-3 w-full bg-black text-white py-2  rounded-full sm:py-3 md:py-4 font-medium  hover:bg-gray-800">
               Member Checkout

@@ -57,16 +57,13 @@ const Header = () => {
         <div className="hidden md:flex flex-row items-center">
           <ul className="flex  items-center  gap-6">
             <li className="hover:underline">
-              <Link href={"/Allproducts"}> News & Featured </Link>
+              <Link href={"/Allproducts"}> Shop </Link>
             </li>
             <li className="hover:underline">
               <Link href="/">Mens</Link>
             </li>
             <li className="hover:underline">
               <Link href="/">Women</Link>
-            </li>
-            <li className="hover:underline">
-              <Link href="/">Kids</Link>
             </li>
             <li className="hover:underline">
               <Link href="/">Sales</Link>

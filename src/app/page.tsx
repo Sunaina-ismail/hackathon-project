@@ -8,9 +8,6 @@ import Gearup from "@/components/Home/gearup";
 import Hero from "@/components/Home/hero";
 
 
-
-
-
 export default function Home() {
   return (
 <div>
