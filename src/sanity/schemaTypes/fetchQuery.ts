@@ -1,16 +1,17 @@
-export const allProductsQuery = `*[_type == "product" && slug.current == $slug][0]{
-    _id,
-    productName,
-    price,
-    tags,
-    category,
-    status,
-    inventory,
-    colors,
-    description,
-    "imageUrl": image.asset->url,
-    "slug": slug.current
-  }`;
+export const allProductsDetailQuery = `*[_type == "product" && slug.current == $slug][0]{
+  _id,
+  productName,
+  price,
+  tags,
+  category,
+  status,
+  inventory,
+  colors,
+  description,
+  "imageUrl": image.asset->url,
+  "slug": slug.current
+}`;
+
   export const Gearup = `*[_type == "product" && "Gear Up" in tags ] {
     _id,
     productName,
@@ -32,4 +33,6 @@ export const allProductsQuery = `*[_type == "product" && slug.current == $slug][
     tags,
     slug
   }`;
-  
+
+
+ 

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 const Featured = () => {
   return (
@@ -32,10 +33,10 @@ const Featured = () => {
         
   
         <div className="flex items-center gap-y-4 gap-x-4 ">
-          <button className="px-3 sm:px-5 py-2 sm:py-3 md:px-6 md:py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition">
+          <Link href={'/Snkrs'}><button className="px-3 sm:px-5 py-2 sm:py-3 md:px-6 md:py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition">
             Find Your Shoe
           </button>
-       
+          </Link>
         </div>
       </div>
     </div>

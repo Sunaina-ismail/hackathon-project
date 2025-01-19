@@ -1,64 +1,67 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { client } from '@/sanity/lib/client';
-import { AllProducts } from '@/sanity/types/type';
-import Link from 'next/link';
+import ProductCard from '@/components/Home/ProductCard';
+import { fetchProducts } from '@/sanity/schemaTypes/data-fetch-utils';
+import { AllProducts as Iproduct } from '@/sanity/types/type';
+import FilterSidebar from '@/components/Home/FilterSidebar';
+import PaginationComponent from '@/components/Home/Pagination';
 
-export const allProductsQuery = `*[_type == "product"]{
-  _id,
-  productName,
-  price,
-  "slug": slug.current,
-  category,
-  status,
-  "imageUrl": image.asset->url
-}`;
 
-export default function Allproduct() {
+export default function AllProducts() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const [isGenderOpen, setGenderOpen] = useState(true);
-  const [products, setProducts] = useState<AllProducts[]>([]); 
+  const [products, setProducts] = useState<Iproduct[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>(''); 
+  const [selectedSort, setSelectedSort] = useState<string>('default'); 
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const productsPerPage = 12;  
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const loadProducts = async () => {
       try {
-        const result = await client.fetch(allProductsQuery);
-        const formattedProducts = result.map((product: any) => ({
-          name: product.productName, 
-          category: product.category,
-          price: product.price.toString(), 
-          image: product.imageUrl,
-          slug:product.slug, 
-          status: product.status, 
-        }));
-
-        console.log(formattedProducts);
-        setProducts(formattedProducts);
+        const data = await fetchProducts();
+        setProducts(data);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error(error);
       }
     };
 
-    fetchProducts();
+    loadProducts();
   }, []);
 
-  
   const categories = [
-    'Shoes',
-    'Sports Bras',
-    'Top',
+    'Jersey',
     'Hoodies & Sweatshirts',
     'Jackets',
     'Trousers & Tights',
-    'Jersey',
-    'Tracksuits',   
-    
+    'Top',
+    'Tracksuits',
   ];
+
+  const filteredProducts = products.filter(product =>
+    selectedCategory ? product.category === selectedCategory : true
+  );
+
+  const sortedProducts = selectedSort === 'priceLowToHigh' 
+    ? filteredProducts.sort((a, b) => a.price - b.price)
+    : selectedSort === 'priceHighToLow'
+    ? filteredProducts.sort((a, b) => b.price - a.price)
+    : filteredProducts;
+
+  // Pagination logic: Slice the sortedProducts to get the current page's products
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  const totalPages = Math.ceil(sortedProducts.length / productsPerPage);  // Calculate total pages
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div className="min-h-screen py-32 flex flex-col">
-      <div className="flex flex-col sm:flex-row justify-between items-center px-4 py-4 border-b border-gray-300">
+      {/* Header Section */}
+      <div className="flex flex-col sm:flex-row justify-between items-center px-4 py-4 border-b">
         <h1 className="text-lg font-bold">New Products</h1>
         <div className="flex space-x-4 mt-2 sm:mt-0">
           <button
@@ -67,86 +70,43 @@ export default function Allproduct() {
           >
             {isSidebarOpen ? 'Hide Filters' : 'Show Filters'}
           </button>
-          <select className="border rounded p-1 text-sm">
-            <option>Sort By</option>
-            <option>Price: Low to High</option>
-            <option>Price: High to Low</option>
-          </select>
         </div>
       </div>
 
+      {/* Main Content */}
       <div className="flex flex-col md:flex-row flex-1 relative">
-        <aside
-          className={`absolute sm:fixed md:static bg-white z-40 w-3/4 md:w-1/4 p-4 border-r border-gray-300 transition-transform duration-300 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
-        >
-          <div className="h-64 overflow-y-auto">
-            <ul className="space-y-2">
-              {categories.map((category, index) => (
-                <li key={index} className="cursor-pointer hover:underline">
-                  {category}
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* Sidebar */}
+        <FilterSidebar
+          categories={categories}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          isSidebarOpen={isSidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          selectedSort={selectedSort}
+          setSelectedSort={setSelectedSort}
+        />
 
-          <hr className="my-4" />
-          
-        
-          <div>
-            <h3
-              className="font-semibold flex justify-between items-center cursor-pointer"
-              onClick={() => setGenderOpen(!isGenderOpen)}
-            >
-              Gender <span>{isGenderOpen ? '▲' : '▼'}</span>
-            </h3>
-            {isGenderOpen && (
-              <ul className="mt-2 space-y-2">
-                <li>
-                  <input type="checkbox" id="men" /> <label htmlFor="men">Men</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="women" /> <label htmlFor="women">Women</label>
-                </li>
-                <li>
-                  <input type="checkbox" id="unisex" /> <label htmlFor="unisex">Unisex</label>
-                </li>
-              </ul>
-            )}
-          </div>
-
-         
-        </aside>
-
+        {/* Products Grid */}
         <main className="w-full md:w-3/4 p-4">
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4">
-            {products.length > 0 ? (
-              products.map((product: AllProducts, index: number) => (
-                <div key={index} className="p-2 border rounded shadow-sm">
-                <Link href={`/product/${product.slug}`}>
-                    <Image
-                      src={product.image}
-                      alt={product.productName}
-                      width={700}
-                      height={700}
-                      className="mb-2 object-cover"
-                    />
-                    </Link>
-                 
-
-                  <span className="text-sm font-medium text-yellow-600 ">{product.status}</span>
-                  <h3 className="font-semibold text-lg mb-1">{product.productName}</h3>
-                  <span className="block text-sm text-gray-500 mb-2">
-                    {product.category}
-                  </span>
-
-                
-                  <p className="font-bold text-gray-800">$ {product.price}</p>
-                </div>
-              ))
-            ) : (
+            {currentProducts.length > 0 ? (
+              currentProducts.map((product, index) => <ProductCard key={index} product={product} />)
+            ) : selectedCategory && (
+              <p className="text-center text-lg text-gray-500">
+                No products available for {selectedCategory}
+              </p>
+            )}
+            {!selectedCategory && products.length === 0 && (
               <p>Loading products...</p>
             )}
           </div>
+
+          {/* Pagination Component */}
+          <PaginationComponent 
+            currentPage={currentPage} 
+            totalPages={totalPages} 
+            onPageChange={handlePageChange} 
+          />
         </main>
       </div>
     </div>

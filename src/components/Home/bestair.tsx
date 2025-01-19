@@ -27,7 +27,7 @@ export default function Bestair() {
         console.log(result); 
   
         const formattedProducts = result.map((product: any) => ({
-          name: product.productName,
+          ProductName: product.productName,
           category: product.category,
           price: product.price.toString(),
           color:product.color,
@@ -63,17 +63,17 @@ export default function Bestair() {
               <div className="py-2 flex items-center  justify-center cursor-pointer">
                 <Image
                   src={product.image}
-                  alt={product.name}
+                  alt={product.slug}
                   width={400}
                   height={400}
                   className="rounded-md"
                 />
               </div>
-              <h3 className="font-semibold text-lg">{product.name}</h3>
+              <h3 className="font-semibold text-lg">{product.productName}</h3>
               <span className="block text-sm text-gray-500">
                 {product.category}
               </span>
-              <p className="text-sm font-bold">${product.price}</p>
+              <p className="text-sm font-bold">Rs.{product.price}</p>
             </Link>
           </div>
         ))
