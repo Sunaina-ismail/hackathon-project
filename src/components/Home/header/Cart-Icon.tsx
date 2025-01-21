@@ -4,7 +4,9 @@
 "use client";
 import { useCart } from "@/app/context/cartContext";
 import React from "react";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { ShoppingCart } from "lucide-react"
+
+
 
 
 const CartIcon = () => {
@@ -15,13 +17,14 @@ const CartIcon = () => {
 
   return (
     <div className="relative">
-      <AiOutlineShoppingCart size={20} className="sm:size-6 hover:scale-110" />
-      {totalItems > 0 && (
-        <span className="absolute -top-2 -right-2 bg-[#c34d4d] text-white text-[7px] sm:text-xs w-3 h-3 rounded-full flex items-center justify-center">
-          {totalItems}
-        </span>
-      )}
-    </div>
+    <ShoppingCart size={20} className="text-base sm:text-lg hover:scale-110" />
+    {totalItems > 0 && (
+      <span className="absolute md:-top-2 -top-1 -right-1 md:-right-2 bg-[#c34d4d] text-white text-[7px] sm:text-xs w-3 h-3 rounded-full flex items-center justify-center">
+        {totalItems}
+      </span>
+    )}
+  </div>
+  
   );
 };
 

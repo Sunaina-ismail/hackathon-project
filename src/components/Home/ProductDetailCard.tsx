@@ -1,4 +1,3 @@
-
 "use client";
 import { useCart } from "@/app/context/cartContext";
 import Image from "next/image";
@@ -32,13 +31,13 @@ const ProductDetailCard = ({
         id: productId,
         name: productName,
         price,
+        inventory,
         quantity: 1,
         color: colors[0],
         imageUrl,
       });
 
-     
-      toast.success(`${productName} Added to cart!`  );
+      toast.success(`${productName} Added to cart!`);
     } else {
       toast.error("Sorry, this product is out of stock.");
     }
@@ -66,7 +65,7 @@ const ProductDetailCard = ({
             {description}
           </p>
 
-          <div className="flex px-6 md:px-0 gap-y-2 gap-x-2 md:pb-0 md:gap-y-2">
+          <div className="flex px-6 sm:mx-0 mx-auto md:px-0 gap-y-2 gap-x-2 md:pb-0 md:gap-y-2">
             <p className="font-semibold text-lg text-gray-600">Color:</p>
             <div className="flex gap-2">
               {colors.map((color, index) => {
@@ -113,6 +112,7 @@ const ProductDetailCard = ({
           <button
             onClick={handleAddToCart}
             disabled={inventory === 0}
+            aria-label={inventory === 0 ? "Out of Stock" : "Add to Cart"}
             className={`flex items-center gap-2 w-[150px] px-3 py-3 sm:px-4 sm:py-2 rounded-full transition duration-200 mx-auto sm:mx-0 ${
               inventory === 0
                 ? "bg-gray-400 cursor-not-allowed"
@@ -120,7 +120,7 @@ const ProductDetailCard = ({
             }`}
           >
             <span>
-              <BsCartDash />
+              <BsCartDash aria-hidden="true" />
             </span>
             {inventory === 0 ? "Out of Stock" : "Add To Cart"}
           </button>

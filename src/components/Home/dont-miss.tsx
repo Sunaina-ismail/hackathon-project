@@ -6,9 +6,9 @@ const Dontmiss = () => {
   return (
     <div className='w-full py-4 px-4 md:px-10 md:py-8'>
 
-    <div className='   pb-4 font-semibold  text-2xl'>
-      <p>Don&apos;t Miss</p>
-    </div>
+    <h4 className='   pb-4 font-semibold  text-2xl'>
+      Don&apos;t Miss
+    </h4>
 
 
     <div className='flex flex-col items-center gap-y-6  md:gap-y-5'>
@@ -34,7 +34,7 @@ const Dontmiss = () => {
       
 
       <div className="flex items-center gap-y-4 gap-x-4 ">
-       <Link href={"/Allproducts"}> <button className="px-3 sm:px-5 py-2 sm:py-3 md:px-6 md:py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition">
+       <Link href={"/Allproducts"}> <button className="px-3 sm:px-5 py-2 sm:py-3 md:px-6 md:py-3 hover:text-white hover:bg-black bg-text-white bg-white border-black border  rounded-full font-medium  transition">
         Shop
         </button>
         </Link>

@@ -60,7 +60,7 @@ const Subtotal = () => {
         id="easypaisa"
         name="paymentMethod"
         value="easypaisa"
-        className="mr-2 transform text-pink-300 w-6 h-6"
+        className="mr-2 transform  relative z-[30]  text-pink-300 w-6 h-6"
       />
       <label htmlFor="easypaisa" className="text-black">
         Easypaisa
@@ -72,7 +72,7 @@ const Subtotal = () => {
         id="jazzcash"
         name="paymentMethod"
         value="jazzcash" 
-        className="mr-2 transform w-6 h-6"
+        className="mr-2 transform relative z-[30] w-6 h-6"
       />
       <label htmlFor="jazzcash" className="text-black">
         JazzCash
@@ -84,7 +84,7 @@ const Subtotal = () => {
         id="bankTransfer"
         name="paymentMethod"
         value="bankTransfer"
-        className="mr-2 transform w-6 h-6"
+        className="mr-2  relative z-[30]  transform w-6 h-6"
       />
       <label htmlFor="bankTransfer" className="text-black">
         Bank Transfer
@@ -95,6 +95,7 @@ const Subtotal = () => {
     The selected method will guide you to securely complete the payment.
     Please use your Order ID as the payment reference.
   </p>
+
 </div>
 
 
@@ -110,12 +111,14 @@ const Subtotal = () => {
 
         {/* Submit Button */}
         <div className="flex items-center justify-center">
-          <button
-            type="submit"
-            className="border border-black text-xl py-4 px-10 lg:px-28 bg-black text-white hover:bg-gray-800 rounded font-medium relative overflow-hidden transition-all duration-300 ease-out group"
-          >
-            Place Order
-          </button>
+        <button
+  type="submit"
+  aria-label="Place your order"
+  className="border border-black text-xl py-4 px-10 lg:px-28 bg-black text-white hover:bg-white hover:text-black rounded font-medium relative overflow-hidden transition-all duration-300 ease-out group"
+>
+  Place Order
+  <span className="absolute top-0 left-0 w-full h-full transition-all duration-500 ease-out group-hover:shadow-[0_20px_50px_0_rgba(0,0,0,0.2)]"></span>
+</button>
           <span className="absolute top-0 left-0 w-full h-full transition-all duration-500 ease-out group-hover:shadow-[0_20px_50px_0_rgba(0,0,0,0.2)]"></span>
         </div>
       </div>

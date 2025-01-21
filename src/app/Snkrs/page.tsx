@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import ProductCard from '@/components/Home/ProductCard';
 import { fetchProducts } from '@/sanity/schemaTypes/data-fetch-utils';
 import { AllProducts as Iproduct } from '@/sanity/types/type';
@@ -12,9 +12,7 @@ export default function SNKRS() {
     const loadProducts = async () => {
       try {
         const data = await fetchProducts();
-       
-        const shoes = data.filter((product) => product.category === 'Shoes');
-        setProducts(shoes);
+        setProducts(data);
         setLoading(false);
       } catch (error) {
         console.error(error);
@@ -25,14 +23,19 @@ export default function SNKRS() {
     loadProducts();
   }, []);
 
+  // Use useMemo to memoize the filtered products (shoes) to avoid recalculating on every render
+  const shoes = useMemo(() => {
+    return products.filter((product) => product.category === 'Shoes');
+  }, [products]); // Only re-run when products array changes
+
   return (
     <div className="min-h-screen py-32 md:px-6 flex flex-col">
       <h1 className="text-center text-2xl font-bold mb-8">SNKRS</h1>
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4 px-4">
         {loading ? (
           <p>Loading shoes...</p>
-        ) : products.length > 0 ? (
-          products.map((product, index) => (
+        ) : shoes.length > 0 ? (
+          shoes.map((product, index) => (
             <ProductCard key={index} product={product} />
           ))
         ) : (

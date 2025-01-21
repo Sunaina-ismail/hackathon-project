@@ -9,9 +9,9 @@ const Essential = () => {
   ];
   
   return (
-    <div className="py-10 ">
-      <div className="md:px-8 px-10 mb-4 font-semibold text-2xl">
-        <p>The Essentials</p>
+    <div className="py-10">
+    <div className="md:px-8 px-10 mb-4 font-semibold text-xl md:text-2xl">
+      <h2>The Essentials</h2>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-6 px-10">

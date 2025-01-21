@@ -48,7 +48,7 @@ export default function Bestair() {
   return (
     <section className="px-4 md:px-6">
     <div className="mb-4">
-      <h4 className="text-2xl font-semibold">Best of Air Max</h4>
+      <h1 className="text-2xl font-semibold">Best of Air Max</h1>
     </div>
   
    
@@ -61,13 +61,16 @@ export default function Bestair() {
           >
             <Link href={`/product/${product.slug}`}>
               <div className="py-2 flex items-center  justify-center cursor-pointer">
-                <Image
-                  src={product.image}
-                  alt={product.slug}
-                  width={400}
-                  height={400}
-                  className="rounded-md"
-                />
+               <Image
+  src={product.image}
+  alt={product.slug}
+  width={400}
+  height={400}
+  className="rounded-md"
+  placeholder="blur"
+  blurDataURL={product.image} // Optional: Add a small image URL or base64 string
+  loading="lazy" // Ensure lazy loading
+/>
               </div>
               <h3 className="font-semibold text-lg">{product.productName}</h3>
               <span className="block text-sm text-gray-500">

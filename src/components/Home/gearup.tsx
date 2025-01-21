@@ -41,8 +41,8 @@ export default function GearUp() {
 
   return (
     <section className="my-16 md:my-24 px-4 sm:px-6 lg:px-10">
-      <div className="mb-2">
-        <h4 className="text-2xl font-semibold">Gear Up</h4>
+    <div className="mb-2">
+      <h2 className="text-xl md:text-2xl font-semibold">Gear Up</h2>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -52,13 +52,17 @@ export default function GearUp() {
           
               <Link href={`/product/${product.slug}`}>
                 <div className="py-2 flex items-center justify-center cursor-pointer">
-                  <Image
-                    src={product.image}
-                    alt={product.slug}
-                    width={500}
-                    height={500}
-                    className="transition-transform duration-300 hover:scale-105"
-                  />
+                <Image
+  src={product.image}
+  alt={product.slug}
+  width={400}
+  height={400}
+  className="rounded-md"
+  placeholder="blur"
+  blurDataURL={product.image} // Optional: Add a small image URL or base64 string
+  loading="lazy" // Ensure lazy loading
+/>
+
                 </div>
                 <h3 className="font-medium text-lg">{product.productName}</h3>
                 <span className="block text-sm text-gray-500">{product.category}</span>
