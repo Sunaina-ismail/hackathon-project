@@ -16,7 +16,7 @@ const Header = () => {
       {/* Top Bar */}
       <div className="relative bg-stone-200 py-1 px-4 md:p-1 text-black w-full">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link href={"/"} aria-label="Go to Home">
+          <Link href={""} aria-label="Go to Home">
             <Image src={"/jumpman.png"} alt="Jumpman Logo" width={24} height={24} />
           </Link>
 

@@ -1,9 +1,3 @@
-
-
-
-
-
-
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,7 +8,7 @@ interface ProductCardProps {
   product: AllProducts;
 }
 
-const ProductCard = React.memo(({ product }: ProductCardProps) => {
+const ProductCard = ({ product }: ProductCardProps) => {
   const isSoldOut = product.inventory === 0;
 
   return (
@@ -39,6 +33,6 @@ const ProductCard = React.memo(({ product }: ProductCardProps) => {
       <p className="font-bold text-gray-800">Rs. {product.price}</p>
     </div>
   );
-});
+};
 
 export default ProductCard;

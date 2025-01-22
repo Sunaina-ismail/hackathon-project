@@ -1,8 +1,7 @@
 "use client";
-
 import { useState } from "react";
 import { TextField, Button, CircularProgress, Typography } from "@mui/material";
-import axios from "axios"; 
+import axios from "axios";
 
 const OrderTracking = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -14,8 +13,7 @@ const OrderTracking = () => {
     setError("");
     setOrderData(null);
 
-    
-    const phoneRegex = /^[0-10]{11}$/;
+    const phoneRegex = /^[0-9]{11}$/;
     if (!phoneRegex.test(phoneNumber)) {
       setError("Please enter a valid 11-digit phone number.");
       return;
@@ -23,11 +21,11 @@ const OrderTracking = () => {
 
     setLoading(true);
     try {
-      // Simulate API call (replace with actual endpoint)
+  
       const response = await axios.get(`/api/track-order?phone=${phoneNumber}`);
       setOrderData(response.data);
     } catch (err) {
-      setError("Unable to find orders for the given phone number."+err);
+      setError("Unable to find orders for the given phone number." + err);
     } finally {
       setLoading(false);
     }
@@ -35,14 +33,22 @@ const OrderTracking = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gray-100">
-      <div className="bg-white  shadow-md rounded-lg p-6 w-full max-w-lg">
-        <Typography variant="h4" gutterBottom align="center">
+      <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-lg">
+      
+        <Typography variant="h2" gutterBottom align="center">
           Track Your Order
         </Typography>
-        <Typography variant="body2" color="textSecondary" align="center" gutterBottom>
+      
+        <Typography
+          variant="body1"
+          color="textSecondary"
+          align="center"
+          gutterBottom
+        >
           Enter your phone number to track your order status.
         </Typography>
-        <div className="mt-4  ">
+        <div className="mt-4">
+      
           <TextField
             label="Phone Number"
             variant="outlined"
@@ -54,8 +60,9 @@ const OrderTracking = () => {
           />
         </div>
         <div className="mt-4">
+       
           <Button
-          id="btn"
+            id="btn"
             variant="contained"
             color="secondary"
             fullWidth
@@ -65,9 +72,10 @@ const OrderTracking = () => {
             {loading ? <CircularProgress size={24} /> : "Track Order"}
           </Button>
         </div>
+  
         {orderData && (
           <div className="mt-6">
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h3" gutterBottom>
               Order Details:
             </Typography>
             <div className="bg-gray-100 p-4 rounded-lg">
@@ -83,8 +91,14 @@ const OrderTracking = () => {
             </div>
           </div>
         )}
+       
         {!orderData && !loading && error && (
-          <Typography variant="body2" color="error" align="center" className="mt-4">
+          <Typography
+            variant="body2"
+            color="error"
+            align="center"
+            className="mt-4"
+          >
             {error}
           </Typography>
         )}

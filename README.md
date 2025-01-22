@@ -1,103 +1,80 @@
-# E-Commerce Website UI
+# Nike E-Commerce Marketplace
 
-An intuitive and responsive e-commerce platform UI designed to provide an exceptional shopping experience. This project includes a fully functional UI for a variety of pages such as the home page, product details, cart, wishlist, signup, billing, contact, and about us. The platform supports dynamic features like adding/removing items in the cart using React's `useState`.
+## Project Overview
 
-## Project Features
+The **Nike E-Commerce Marketplace** is a modern, responsive online store for Nike products like shoes, activewear, and accessories. It offers a seamless shopping experience with real-time updates, easy product filtering, order tracking, and smooth checkout.
 
-- **Home Page**: Showcases flash sales, best-selling products, and categorized listings.
-- **Product Details Page**: Provides detailed information about individual products.
-- **Cart Functionality**: Add, remove, and adjust quantities of items in the cart.
-- **Wishlist**: Save your favorite products for future reference.
-- **Signup Page**: Secure user registration interface.
-- **Billing Page**: Overview and summary of the checkout process.
-- **Contact Page**: Allows users to reach out for support or inquiries.
-- **About Us Page**: Highlights the story and mission of the e-commerce platform.
+### Features:
+- Wide variety of Nike products.
+- Customizable shopping (size, stock availability).
+- User-friendly checkout and real-time order tracking.
 
 ---
 
-## Steps to Run the Project Locally
+## Key Components
 
-### Prerequisites
+### 1. *Product Listings*
+- Dynamic rendering of products with name, image, price, and availability.
+- Filtering by category and stock.
+- Sorting by price, rating, or name.
 
-Ensure that you have the following installed on your system:
-- **Node.js** (latest LTS version recommended)
-- A package manager like **npm** or **yarn**
+### 2. *Cart Functionality*
+- Add/remove items and update quantities.
+- Automatic price calculation (including taxes and discounts).
+- Real-time cart updates with state management.
 
-### Installation
+### 3. *Checkout Process*
+- Secure payment gateway integration.
+- Form validation for accurate data collection.
+- Order confirmation summary.
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/Sunaina-ismail/hackathon-project.git
-   cd <hackathon-project>
-   ```
-
-2. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
-
-### Running the Project Locally
-
-3. **Run the Development Server**:
-   ```bash
-   npm run dev
-   ```
-   This will start the server on `http://localhost:3000`. Open this URL in your browser to view the application.
-
-4. **Build for Production**:
-   To create an optimized build for deployment:
-   ```bash
-   npm run build
-   ```
-
-5. **Start the Production Server**:
-   After building the project:
-   ```bash
-   npm start
-   ```
-
----
-
-## Deployment
-
-### Steps to Deploy
-
-1. **Build the Application**:
-   Ensure the application is optimized for deployment by running:
-   ```bash
-   npm run build
-   ```
-
-2. **Choose a Hosting Service**:
-   Deploy the built files to a hosting platform like **Vercel**, **Netlify**, or any other platform that supports Next.js.
-
-3. **Configure Your Domain**:
-   Add your deployment URL in the project configuration if needed.
-
-### Live Deployment URL
-
-The live version of this project is deployed at:
-[Deployment URL]
-<https://hackathon-project-sunaina-ismails-projects.vercel.app/>
+### 4. *Order Tracking*
+- Track orders by phone number.
+- Real-time shipment status updates.
 
 ---
 
 ## Technologies Used
-
-- **React.js**: For building the UI components.
-- **Next.js**: For server-side rendering and routing.
-- **Tailwind CSS**: For responsive and modern styling.
-- **React Icons**: For adding scalable vector icons.
-
----
-
-## Folder Structure
-
-- **components/**: Contains reusable UI components.
-- **pages/**: Includes Next.js page routes for Home, About, Cart, Wishlist, etc.
-- **public/**: Stores static assets like images and icons.
-- **styles/**: Contains global styles.
+- **Next.js** for frontend and SSR.
+- **Sanity CMS** for product management.
+- **Tailwind CSS** for responsive UI.
+- **Vercel** for deployment.
+- **Zod** for form validation.
+- **Lighthouse** for performance testing.
 
 ---
 
-Feel free to contribute or customize this project as per your requirements!
+## Deployment Steps
+
+1. **Hosting**: Deployed to *Vercel*, connected to GitHub repository.
+2. **Environment Setup**: Created `.env.local` for API keys and variables.
+3. **Staging Testing**: Verified core features in Vercel’s staging environment.
+
+---
+
+## Development Timeline
+
+### Day 1: Project Setup
+- Defined marketplace structure, products, and user flow.
+- Designed wireframes and UI components.
+
+### Day 2: Planning & Integration
+- Integrated *Next.js* and *Sanity CMS*.
+- Created workflows for key pages (Home, Cart, Checkout).
+
+### Day 3: API Integration
+- Integrated product APIs and migrated data to Sanity CMS.
+
+### Day 4: Frontend Development
+- Built *Product Listings*, *Cart*, and *Category Filters*.
+- Implemented *Pagination* and dynamic product rendering.
+
+### Day 5: Testing & Optimization
+- Conducted testing and refined components.
+- Improved performance and reduced load times.
+
+### Day 6: Final Deployment
+- Set up staging and deployed for production.
+
+
+
