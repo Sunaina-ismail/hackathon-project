@@ -7,6 +7,7 @@ import { useState } from "react";
 import Image from "next/image";
 import CartIcon from "./Cart-Icon";
 import SearchComponent from "./seacrhbar";
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,7 +15,7 @@ const Header = () => {
   return (
     <header className="fixed w-full z-50">
       {/* Top Bar */}
-      <div className="relative bg-stone-200 py-1 px-4 md:p-1 text-black w-full">
+      <div className="relative bg-stone-200 py-1 px-6 md:p-1 text-black w-full">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href={""} aria-label="Go to Home">
             <Image src={"/jumpman.png"} alt="Jumpman Logo" width={24} height={24} />
@@ -25,19 +26,26 @@ const Header = () => {
           </p>
 
           <div className="flex items-center space-x-1 text-sm">
-            <Link href={"/Location"} aria-label="Find a store">Find a store</Link>
-            <span>|</span>
-            <Link href="/Contact" aria-label="Get help or support">Help</Link>
-            <span>|</span>
-            <Link href={"/Joinus"} aria-label="Join us now">Join us</Link>
-            <span>|</span>
-            <Link href={"/Login"} aria-label="Sign in to your account">Sign In</Link>
+          
+            <Link href={"/sign-up"} aria-label="Join us now">   <SignedOut>
+            <SignUpButton>
+            Join us |
+            </SignUpButton>
+          </SignedOut>  </Link>
+          
+            <Link href="/" aria-label="Go to Account">
+        <SignedOut>
+            <SignInButton>
+            Sign In
+            </SignInButton>
+          </SignedOut>
+    </Link>
           </div>
         </div>
       </div>
 
       {/* Main Header */}
-      <div className="flex items-center bg-white justify-between py-1 md:py-3 px-4 md:px-8">
+      <div className="flex items-center bg-white justify-between py-1 md:py-3 px-4 md:px-10">
         <div className="flex items-center z-50 gap-2">
           <button
             className="md:hidden focus:outline-none"
@@ -55,7 +63,7 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className="hidden md:flex flex-row items-center">
+        <div className="hidden md:flex flex-row items-center  justify-center">
           <ul className="flex items-center gap-6">
             <li className="hover:underline">
               <Link href={"/"} aria-label="Go to Home Page"> Home </Link>
@@ -63,26 +71,33 @@ const Header = () => {
             <li className="hover:underline">
               <Link href={"/Allproducts"} aria-label="Shop all products"> Shop </Link>
             </li>
+           
             <li className="hover:underline">
-              <Link href="/Snkrs" aria-label="Explore SNKRS">SNKRS</Link>
+              <Link href="/aboutus" aria-label="About-Nike">About Us</Link>
+            </li>
+            <li className="hover:underline">
+              <Link href="/Contact" aria-label="Contact-Nike">Contact</Link>
             </li>
           </ul>
         </div>
 
         <div className="flex items-center space-x-2">
           <SearchComponent />
-          <span>
+          <div className="flex items-center gap-2">
             <Link href="/Cart" aria-label="View your shopping cart">
               <CartIcon />
             </Link>
-          </span>
+            <SignedIn>
+            <UserButton />
+          </SignedIn>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+     
       {menuOpen && (
         <div className="absolute top-16 left-0 w-full bg-white shadow-lg md:hidden">
-          <ul className="flex flex-col gap-y-4 px-4 py-6">
+          <ul className="flex flex-col gap-y-4 px-10 py-6">
             <li className="hover:underline">
               <Link href={"/"} aria-label="Go to Home Page"> Home </Link>
             </li>
@@ -90,7 +105,10 @@ const Header = () => {
               <Link href={"/Allproducts"} aria-label="Shop all products"> Shop </Link>
             </li>
             <li className="hover:underline">
-              <Link href="/Snkrs" aria-label="Explore SNKRS">SNKRS</Link>
+              <Link href="/aboutus" aria-label="About-Nike">About Us</Link>
+            </li>
+            <li className="hover:underline">
+              <Link href="/Contact" aria-label="Contact-Nike">Contact</Link>
             </li>
           </ul>
         </div>

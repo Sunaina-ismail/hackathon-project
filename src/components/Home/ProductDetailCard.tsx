@@ -1,8 +1,10 @@
+
 "use client";
+import { useState } from "react";
 import { useCart } from "@/app/context/cartContext";
 import Image from "next/image";
-import { BsCartDash } from "react-icons/bs";
-import toast from "react-hot-toast"; 
+import { BsCartPlus } from "react-icons/bs";
+import toast from "react-hot-toast";
 
 interface ProductDetailCardProps {
   productName: string;
@@ -23,108 +25,97 @@ const ProductDetailCard = ({
   inventory,
   productId,
 }: ProductDetailCardProps) => {
-  const { addToCart } = useCart();
+  const { addItem } = useCart(); 
+  const [selectedColor, setSelectedColor] = useState<string>(colors[0]);
 
   const handleAddToCart = () => {
     if (inventory > 0) {
-      addToCart({
+      addItem({
         id: productId,
         name: productName,
         price,
         inventory,
         quantity: 1,
-        color: colors[0],
+        color: selectedColor,
         imageUrl,
+       
       });
 
-      toast.success(`${productName} Added to cart!`);
+      toast.success(`${productName} (${selectedColor}) added to cart!`);
     } else {
-      toast.error("Sorry, this product is out of stock.");
+      toast.error("This product is out of stock.");
     }
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-between px-4 sm:px-8 md:px-20 py-32 sm:py-16 md:py-20">
-      {/* Image Section */}
-      <div className="w-full md:w-auto flex justify-center items-center px-2 sm:px-6">
+    <div className="flex flex-col md:flex-row justify-between px-4 sm:px-8 md:px-20 py-24">
+   
+      <div className="w-full md:w-1/2 flex justify-center items-center">
         <Image
           src={imageUrl}
           alt={productName}
-          width={750}
-          height={600}
-          className="w-full sm:w-[400px] md:w-[550px] h-[300px] sm:h-[400px] md:h-[500px]"
+          width={550}
+          height={500}
+          className="w-full sm:w-[400px] md:w-[500px] h-[300px] sm:h-[400px] md:h-[500px] object-cover"
         />
       </div>
 
-      <div className="w-full md:w-2/3 flex justify-center md:justify-start items-center md:items-start py-8 md:py-24">
-        <div className="flex flex-col gap-3 p-4 sm:p-6 md:p-10">
-          <h2 className="text-xl sm:text-3xl font-semibold w-full text-center md:text-left">
-            {productName}
-          </h2>
-          <p className="pt-3 pb-2 px-4 md:px-0 w-72 md:w-96 md:text-lg text-center md:text-left">
-            {description}
-          </p>
+   
+      <div className="w-full md:w-1/2  flex flex-col justify-center p-2 md:p-6">
+        <h2 className="text-2xl sm:text-4xl  font-bold">{productName}</h2>
 
-          <div className="flex px-6 sm:mx-0 mx-auto md:px-0 gap-y-2 gap-x-2 md:pb-0 md:gap-y-2">
-            <p className="font-semibold text-lg text-gray-600">Color:</p>
-            <div className="flex gap-2">
-              {colors.map((color, index) => {
-                const colorClass =
-                  color === "White"
-                    ? "bg-white"
-                    : color === "Black"
-                    ? "bg-black"
-                    : color === "Beige"
-                    ? "bg-beige"
-                    : color === "Gray"
-                    ? "bg-gray-300"
-                    : color === "Teal"
-                    ? "bg-teal-400"
-                    : color === "Red"
-                    ? "bg-red-400"
-                    : color === "Blue"
-                    ? "bg-blue-500"
-                    : color === "Pink"
-                    ? "bg-pink-300"
-                    : color === "Purple"
-                    ? "bg-purple-400"
-                    : color === "Yellow"
-                    ? "bg-yellow-100"
-                    : "";
-
-                return (
-                  <div
-                    key={index}
-                    className={`h-6 w-6 rounded-full ${colorClass} border border-gray-400`}
-                  />
-                );
-              })}
-            </div>
-            <p className="text-sm pl-2 underline underline-offset-2 font-medium text-center justify-center md:text-left">
-              Stock {inventory}
-            </p>
-          </div>
-
-          <p className="text-lg sm:text-xl font-semibold text-center md:text-left">
-            Rs. {price}
-          </p>
-
-          <button
-            onClick={handleAddToCart}
-            disabled={inventory === 0}
-            aria-label={inventory === 0 ? "Out of Stock" : "Add to Cart"}
-            className={`flex items-center gap-2 w-[150px] px-3 py-3 sm:px-4 sm:py-2 rounded-full transition duration-200 mx-auto sm:mx-0 ${
-              inventory === 0
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-black text-white hover:bg-gray-700"
-            }`}
-          >
-            <span>
-              <BsCartDash aria-hidden="true" />
-            </span>
-            {inventory === 0 ? "Out of Stock" : "Add To Cart"}
-          </button>
+        <div className="flex gap-5 mt-3">
+          <p className="text-lg sm:text-xl font-bold">Rs. {price}</p>
+          <p className="text-sm sm:text-base font-medium underline">Stock: {inventory}</p>
         </div>
+
+        <p className="mt-2 text-gray-700 w-full sm:w-96">{description}</p>
+
+  
+        <div className="flex items-center gap-3 mt-4">
+          <p className="font-semibold text-lg text-gray-600">Color:</p>
+          <div className="flex gap-2">
+            {colors.map((color, index) => {
+              const colorClass = {
+                White: "bg-white",
+                Black: "bg-black",
+                Gray: "bg-gray-300",
+                Teal: "bg-teal-400",
+                Red: "bg-red-400",
+                Blue: "bg-blue-500",
+                Pink: "bg-pink-300",
+                Purple: "bg-purple-400",
+                Yellow: "bg-yellow-500",
+                Orange: "bg-orange-300"
+              }[color] || "bg-gray-200"; 
+
+              return (
+                <button
+                  key={index}
+                  onClick={() => setSelectedColor(color)}
+                  className={`h-6 w-6 rounded-full ${colorClass} border ${
+                    selectedColor === color ? "border-2 border-black" : "border-gray-400"
+                  }`}
+                  aria-label={`Select ${color}`}
+                />
+              );
+            })}
+          </div>
+        </div>
+
+  
+        <button
+          onClick={handleAddToCart}
+          disabled={inventory === 0}
+          className={`flex items-center gap-2 w-[150px] mt-5 px-4 py-3 rounded-full transition ${
+            inventory === 0
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-black text-white hover:bg-gray-700"
+          }`}
+        >
+          <BsCartPlus size={18} />
+          {inventory === 0 ? "Out of Stock" : "Add to Cart"}
+        </button>
       </div>
     </div>
   );

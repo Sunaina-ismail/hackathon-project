@@ -15,14 +15,14 @@ const Subtotal = () => {
   return (
     <div className="w-[90%] mx:2 text-black md:mx-auto sm:w-[400px] md:w-[500px] mx-auto lg:w-[508px] h-fit xl:w-[608px] py-9 lg:pb-14 lg:px-9 space-y-9">
       <div className="xl:w-[533px] space-y-9">
-        {/* Cart Summary */}
+ 
         <div className="flex flex-col gap-y-5 border-b pb-4">
           <div className="flex items-center justify-between">
             <span className="text-xl sm:text-2xl font-medium">Product</span>
             <span className="text-xl sm:text-2xl font-medium">Subtotal</span>
           </div>
 
-          {/* Display Cart Items */}
+   
           {cartItems.map((item) => (
             <div
               key={item.id}
@@ -36,7 +36,7 @@ const Subtotal = () => {
             </div>
           ))}
 
-          {/* Subtotal and Total */}
+         
           <div className="flex items-center justify-between">
             <span>Subtotal</span>
             <span>Rs. {totalPrice.toFixed(2)}</span>
@@ -50,7 +50,7 @@ const Subtotal = () => {
           </div>
         </div>
 
-      {/* Payment Methods */}
+    
 <div className="space-y-6">
   <p className="font-medium text-black">Select Payment Method</p>
   <div className="flex flex-col gap-4">
@@ -99,7 +99,7 @@ const Subtotal = () => {
 </div>
 
 
-        {/* Privacy Policy */}
+       
         <div>
           <p>
             Your personal data will be used to support your experience
@@ -109,7 +109,7 @@ const Subtotal = () => {
           </p>
         </div>
 
-        {/* Submit Button */}
+       
         <div className="flex items-center justify-center">
         <button
   type="submit"

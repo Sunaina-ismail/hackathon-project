@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 const Essential = () => {
@@ -10,7 +11,7 @@ const Essential = () => {
   
   return (
     <div className="py-10">
-    <div className="md:px-8 px-10 mb-4 font-semibold text-xl md:text-2xl">
+    <div className="md:px-8 px-10 mb-4 font-bold text-xl md:text-3xl">
       <h2>The Essentials</h2>
       </div>
 
@@ -26,10 +27,10 @@ const Essential = () => {
             />
             
             
-              <button className="absolute bottom-6 left-6 bg-white text-black px-4 py-2 rounded-full hover:bg-black hover:text-white text-sm sm:text-base md:text-lg lg:text-xl">
+        <Link href={'/Allproducts'}><button className="absolute bottom-6 left-6 bg-white text-black px-4 py-2 rounded-full hover:bg-black hover:text-white text-sm sm:text-base md:text-lg lg:text-xl">
                 Shop Now
               </button>
-            
+              </Link>
           </div>
         ))}
       </div>

@@ -34,5 +34,27 @@ export const allProductsDetailQuery = `*[_type == "product" && slug.current == $
     slug
   }`;
 
+  export const NewArrivals = `*[_type == "product" && "New Arrivals" in tags ] {
+    _id,
+    productName,
+    price,
+    color,
+    "imageUrl": image.asset->url,
+    category,
+    tags,
+    slug
+  }`;
+  
+
+  export const essentialsQuery = `*[_type == "product" && "Essentials" in tags]{
+    _id,
+    productName,
+    price,
+    category,
+    slug,
+    "imageUrl": image.asset->url
+  }`;
+  
+
 
  

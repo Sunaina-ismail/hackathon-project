@@ -14,7 +14,7 @@ export default function AllProducts() {
   const [selectedCategory, setSelectedCategory] = useState<string>(''); 
   const [selectedSort, setSelectedSort] = useState<string>('default'); 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const productsPerPage = 12;
+  const productsPerPage = 25;
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -30,7 +30,7 @@ export default function AllProducts() {
   }, []);
 
   const categories = useMemo(
-    () => ['Jersey', 'Hoodies & Sweatshirts', 'Jackets', 'Trousers & Tights', 'Top', 'Tracksuits'],
+    () => ['Shoes', 'Jersey', 'Hoodies & Sweatshirts', 'Jackets', 'Trousers & Tights', 'Top', 'Tracksuits', 'Accessories'],
     []
   );
 
@@ -64,7 +64,7 @@ export default function AllProducts() {
   return (
     <div className="min-h-screen py-32 flex flex-col">
       <div className="flex flex-col sm:flex-row justify-between items-center px-4 py-4 border-b">
-        <h1 className="text-lg font-bold">New Products</h1>
+        <h1 className="text-lg font-bold">Categories</h1>
         <div className="flex space-x-4 mt-2 sm:mt-0">
           <button
             className="text-sm text-gray-500 hover:underline sm:hidden"
@@ -85,32 +85,31 @@ export default function AllProducts() {
           selectedSort={selectedSort}
           setSelectedSort={setSelectedSort}
         />
-<main className="min-h-screen md:w-3/4  p-4 relative">
-  <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4">
-    {currentProducts.length > 0 ? (
-      currentProducts.map((product, index) => (
-        <ProductCard key={product.slug || index} product={product} />
-      ))
-    ) : selectedCategory ? (
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-center">
-        <MdOutlineSearchOff className="text-5xl text-gray-400" />
-        <p className="text-lg text-gray-500">No products found</p>
-      </div>
-    ) : (
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-center">
-        <p className="text-lg text-gray-500">Loading products...</p>
-      </div>
-    )}
-  </div>
-  {currentProducts.length > 0 && (
-    <PaginationComponent
-      currentPage={currentPage}
-      totalPages={totalPages}
-      onPageChange={handlePageChange}
-    />
-  )}
-</main>
-
+        <main className="min-h-screen md:w-3/4  p-4 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4">
+            {currentProducts.length > 0 ? (
+              currentProducts.map((product, index) => (
+                <ProductCard key={product.slug || index} product={product} />
+              ))
+            ) : selectedCategory ? (
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-center">
+                <MdOutlineSearchOff className="text-5xl text-gray-400" />
+                <p className="text-lg text-gray-500">No products found</p>
+              </div>
+            ) : (
+              <div className="absolute inset-0 flex flex-col justify-center items-center text-center">
+                <p className="text-lg text-gray-500">Loading products...</p>
+              </div>
+            )}
+          </div>
+          {currentProducts.length > 0 && (
+            <PaginationComponent
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          )}
+        </main>
       </div>
     </div>
   );

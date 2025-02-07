@@ -12,14 +12,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const isSoldOut = product.inventory === 0;
 
   return (
-    <div className="p-2 border rounded shadow-sm">
-      <Link href={`/product/${product.slug}`}>
+    <div className="p-2 border rounded shadow-sm ">
+      <Link href={`/product/${product.slug}`} className='overflow-hidden'>
         <Image
           src={product.image}
           alt={product.productName}
           width={700}
           height={700}
-          className="mb-2 object-cover"
+          className="mb-2 object-cover overflow-hidden max-h-[700px]"
           priority
         />
       </Link>

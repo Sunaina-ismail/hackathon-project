@@ -5,7 +5,7 @@ import Header from "@/components/Home/header/Header";
 import Footer from "@/components/Home/Footer";
 import { CartProvider } from "./context/cartContext";
 import { Toaster } from "react-hot-toast";
-
+import {ClerkProvider} from "@clerk/nextjs"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +29,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+   <ClerkProvider>
+    <html lang="en" className="scroll-smooth antialiased" suppressHydrationWarning>
+      
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
        ><CartProvider>
@@ -40,5 +42,6 @@ export default function RootLayout({
         </CartProvider>
       </body>
     </html>
+    </ClerkProvider>
   );
 }

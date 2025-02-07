@@ -1,20 +1,16 @@
 
-"use client";
+"use client"
 
-import React from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import Subtotal from "./Subtotal";
+import React from "react"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
+import { useCart } from "@/app/context/cartContext"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import Image from "next/image"
+import toast from "react-hot-toast"
+import { useUser } from "@clerk/nextjs"
 
-// Zod schema for form validation
 const schema = z.object({
   firstName: z.string().min(1, "First Name is required"),
   lastName: z.string().min(1, "Last Name is required"),
@@ -27,318 +23,257 @@ const schema = z.object({
   phone: z
     .string()
     .min(11, "Phone number must be 11 digits")
-    .regex(
-      /^03\d{9}$/,
-      "Phone number must start with 03 and be 11 digits long"
-    ),
+    .regex(/^03\d{9}$/, "Phone number must start with 03 and be 11 digits long"),
   email: z
     .string()
     .email("Invalid email address")
     .regex(/^[a-zA-Z0-9._%+-]+@gmail\.com$/, "Email must be a Gmail address"),
   additionalInfo: z.string().optional(),
-});
+  paymentMethod: z.enum(["easypaisa", "jazzcash", "bankTransfer"]),
+})
 
-// Type inferred from Zod schema
-type BillingFormData = z.infer<typeof schema>;
+type CheckoutFormData = z.infer<typeof schema>
 
 const Billing = () => {
+  const { cartItems, totalPrice, clearCart } = useCart();
+  const shippingCost = 300;
+  const finalTotalPrice = totalPrice + shippingCost;
+  const { user } = useUser(); 
+  const userEmail = user?.emailAddresses?.[0]?.emailAddress || '';
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm<BillingFormData>({
+  } = useForm<CheckoutFormData>({
     resolver: zodResolver(schema),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      country: "",
-      province: "",
-      city: "",
-      area: "",
-      streetAddress: "",
-      zipCode: "",
-      phone: "",
-      email: "",
-      additionalInfo: "",
-    },
   });
 
-  const onSubmit = (data: BillingFormData) => {
-    console.log(data);
-  };
+  const onSubmit = async (data: CheckoutFormData) => {
+    if (cartItems.length === 0) {
+      toast.error("Your cart is empty. Please add items before placing an order.");
+      return; 
+    }
+    const customerData = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: userEmail,
+      phone: data.phone,
+    };
 
-  const countries = ["Pakistan"];
-  const provinces = ["Sindh"];
-  const cities = ["Karachi"];
-  const karachiAreas = [
-    "Saddar",
-    "Korangi",
-    "Gulshan-e-Iqbal",
-    "Shahra-e-Faisal",
-    "DHA",
-  ];
+    const address = {
+      country: data.country,
+      province: data.province,
+      city: data.city,
+      area: data.area,
+      streetAddress: data.streetAddress,
+      zipCode: data.zipCode,
+    };
+
+
+    const orderData:any = {
+      items: cartItems.map((item) => ({
+        productId: item.id,
+        product: {
+          _type: "reference",
+          _ref: item.id,
+        },
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price,
+        color: item.color,
+      })),
+      totalPrice: finalTotalPrice,
+      paymentMethod: data.paymentMethod,
+    };
+
+    try {
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ customerData, orderData, address}), 
+      });
+
+      const result = await response.json();
+      console.log(result)
+      console.log("orderData",orderData)
+      if (response.ok) {
+       
+        toast.success("Order placed successfully!");
+        clearCart();
+        window.location.href = "/order-success"; 
+      } else {
+      
+        toast.error(result.message || "Something went wrong, please try again!");
+      }
+    } catch (error) {
+      console.error("Error submitting order:", error);
+      toast.error("An error occurred while placing the order. Please try again.");
+    }
+  };
+  
+
+  const locations = {
+    country: ["Pakistan"],
+    province: ["Sindh"],
+    city: ["Karachi"],
+    area: ["Saddar", "Korangi", "Gulshan-e-Iqbal", "Shahra-e-Faisal", "DHA"],
+  }
 
   return (
-    <section className="w-full md:pt-28 pt-16">
-      <form
-        className="w-full md:justify-between gap-y-10 my-14 flex flex-col lg:flex-row mx-auto"
-        onSubmit={handleSubmit(onSubmit)}
-        noValidate
-      >
-        {/* Billing Details */}
-        <div className="relative space-y-6 md:space-y-9 mx-6 max-w-[500px]">
-          <div>
-            <h2 className="text-4xl flex items-center text-black justify-center md:justify-start font-semibold">
-              Billing Details
-            </h2>
+    <section className="w-full max-w-6xl mx-auto px-4 py-20">
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col lg:flex-row gap-8 mx-auto">
+        <div className="w-full lg:w-1/2 space-y-8">
+          <h2 className="text-2xl md:text-4xl font-semibold text-black">Billing Details</h2>
+          <div className="grid grid-cols-2 gap-4">
+            {["firstName", "lastName"].map((field) => (
+              <div key={field} className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700 capitalize">
+                  {field.replace(/([A-Z])/g, " $1").trim()}
+                </label>
+                <input
+                  {...register(field as "firstName" | "lastName")}
+                  className="w-full px-3 py-1.5 border border-gray-300 rounded-md focus:ring-1 focus:ring-black  transition duration-200 ease-in-out"
+                />
+                {errors[field as "firstName" | "lastName"] && (
+                  <p className="text-red-500 text-sm">{errors[field as "firstName" | "lastName"]?.message}</p>
+                )}
+              </div>
+            ))}
           </div>
-
-          {/* First and Last Name */}
-          <div className="flex flex-col sm:flex-row gap-7">
-            <div className="space-y-2 text-base md:text-lg w-full sm:w-[48%]">
-              <label htmlFor="firstName" className="font-medium text-black">
-                First Name
-              </label>
-              <input
-                {...register("firstName")}
-                id="firstName"
-                type="text"
-                className="input-class relative z-30"
-                aria-invalid={!!errors.firstName}
-                aria-describedby="firstName-error"
-              />
-              {errors.firstName && (
-                <p id="firstName-error" className="error-class">
-                  {errors.firstName.message}
-                </p>
-              )}
-            </div>
-            <div className="space-y-2 text-base md:text-lg w-full sm:w-[48%]">
-              <label htmlFor="lastName" className="font-medium text-black">
-                Last Name
-              </label>
-              <input
-                {...register("lastName")}
-                id="lastName"
-                type="text"
-                className="input-class relative z-[30]"
-                aria-invalid={!!errors.lastName}
-                aria-describedby="lastName-error"
-              />
-              {errors.lastName && (
-                <p id="lastName-error" className="error-class">
-                  {errors.lastName.message}
-                </p>
-              )}
-            </div>
+          <div className="space-y-4">
+            {Object.entries(locations).map(([field, options]) => (
+              <div key={field} className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700 capitalize">{field}</label>
+                <Select onValueChange={(value) => setValue(field as keyof CheckoutFormData, value)}>
+                  <SelectTrigger className="w-full px-3 py-1.5 border border-gray-300 rounded-md focus:ring-1 focus:ring-black  transition duration-200 ease-in-out">
+                    <SelectValue placeholder={`Select ${field}`} />
+                  </SelectTrigger>
+                  <SelectContent className="z-30 bg-white">
+                    {options.map((item) => (
+                      <SelectItem key={item} value={item}>
+                        {item}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {errors[field as keyof CheckoutFormData] && (
+                  <p className="text-red-500 text-sm">{errors[field as keyof CheckoutFormData]?.message}</p>
+                )}
+              </div>
+            ))}
           </div>
-
-          {/* Country */}
-          <div className="space-y-2 text-base md:text-lg">
-            <label htmlFor="country" className="font-medium text-black">
-              Country / Region
-            </label>
-            <Select onValueChange={(value) => setValue("country", value)}>
-              <SelectTrigger
-                id="country"
-                className="select-class"
-                aria-label="Select a country"
-              >
-                <SelectValue placeholder="Select Country" />
-              </SelectTrigger>
-              <SelectContent>
-                {countries.map((country) => (
-                  <SelectItem key={country} value={country}>
-                    {country}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            {errors.country && (
-              <p id="country-error" className="error-class">
-                {errors.country.message}
-              </p>
-            )}
+          <div className="space-y-4">
+            {["streetAddress", "zipCode", "phone", "email"].map((field) => (
+              <div key={field} className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700 capitalize">
+                  {field.replace(/([A-Z])/g, " $1").trim()}
+                </label>
+                <input
+                  {...register(field as keyof CheckoutFormData)}
+                  className="w-full px-3 py-1.5 border border-gray-300 rounded-md focus:ring-1 focus:ring-black transition duration-200 ease-in-out"
+                />
+                {errors[field as keyof CheckoutFormData] && (
+                  <p className="text-red-500 text-sm">{errors[field as keyof CheckoutFormData]?.message}</p>
+                )}
+              </div>
+            ))}
           </div>
-
-          {/* Province */}
-          <div className="space-y-2 text-base md:text-lg">
-            <label htmlFor="province" className="font-medium text-black">
-              Province
-            </label>
-            <Select onValueChange={(value) => setValue("province", value)}>
-              <SelectTrigger
-                id="province"
-                className="select-class"
-                aria-label="Select a province"
-              >
-                <SelectValue placeholder="Select Province" />
-              </SelectTrigger>
-              <SelectContent>
-                {provinces.map((province) => (
-                  <SelectItem key={province} value={province}>
-                    {province}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            {errors.province && (
-              <p id="province-error" className="error-class">
-                {errors.province.message}
-              </p>
-            )}
-          </div>
-
-          {/* City */}
-          <div className="space-y-2 text-base md:text-lg">
-            <label htmlFor="city" className="font-medium text-black">
-              City
-            </label>
-            <Select onValueChange={(value) => setValue("city", value)}>
-              <SelectTrigger
-                id="city"
-                className="select-class"
-                aria-label="Select a city"
-              >
-                <SelectValue placeholder="Select City" />
-              </SelectTrigger>
-              <SelectContent>
-                {cities.map((city) => (
-                  <SelectItem key={city} value={city}>
-                    {city}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            {errors.city && (
-              <p id="city-error" className="error-class">
-                {errors.city.message}
-              </p>
-            )}
-          </div>
-
-          {/* Area */}
-          <div className="space-y-2 text-base md:text-lg">
-            <label htmlFor="area" className="font-medium text-black">
-              Town / Area
-            </label>
-            <Select onValueChange={(value) => setValue("area", value)}>
-              <SelectTrigger
-                id="area"
-                className="select-class"
-                aria-label="Select an area"
-              >
-                <SelectValue placeholder="Select Area" />
-              </SelectTrigger>
-              <SelectContent>
-                {karachiAreas.map((area) => (
-                  <SelectItem key={area} value={area}>
-                    {area}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            {errors.area && (
-              <p id="area-error" className="error-class">
-                {errors.area.message}
-              </p>
-            )}
-          </div>
-
-          {/* Street Address */}
-          <div className="space-y-2 text-base md:text-lg">
-            <label htmlFor="streetAddress" className="font-medium text-black">
-              Street Address
-            </label>
-            <input
-              {...register("streetAddress")}
-              id="streetAddress"
-              type="text"
-              className="input-class"
-            />
-            {errors.streetAddress && (
-              <p id="streetAddress-error" className="error-class">
-                {errors.streetAddress.message}
-              </p>
-            )}
-          </div>
-
-          {/* ZIP Code */}
-          <div className="space-y-2 text-base md:text-lg">
-            <label htmlFor="zipCode" className="font-medium text-black">
-              ZIP Code
-            </label>
-            <input
-              {...register("zipCode")}
-              id="zipCode"
-              type="text"
-              className="input-class"
-            />
-            {errors.zipCode && (
-              <p id="zipCode-error" className="error-class">
-                {errors.zipCode.message}
-              </p>
-            )}
-          </div>
-
-          {/* Phone */}
-          <div className="space-y-2 text-base md:text-lg">
-            <label htmlFor="phone" className="font-medium text-black">
-              Phone
-            </label>
-            <input
-              {...register("phone")}
-              id="phone"
-              type="text"
-              className="input-class"
-            />
-            {errors.phone && (
-              <p id="phone-error" className="error-class">
-                {errors.phone.message}
-              </p>
-            )}
-          </div>
-
-          {/* Email */}
-          <div className="space-y-2 text-base md:text-lg">
-            <label htmlFor="email" className="font-medium text-black">
-              Email
-            </label>
-            <input
-              {...register("email")}
-              id="email"
-              type="text"
-              className="input-class"
-            />
-            {errors.email && (
-              <p id="email-error" className="error-class">
-                {errors.email.message}
-              </p>
-            )}
-          </div>
-
-          {/* Additional Info */}
-          <div className="space-y-2 text-base md:text-lg">
-            <label htmlFor="additionalInfo" className="font-medium text-black">
-              Additional Information
-            </label>
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-700">Additional Information</label>
             <textarea
               {...register("additionalInfo")}
-              id="additionalInfo"
-              rows={4}
-              className="input-class"
+              rows={3}
+              className="w-full px-3 py-1.5 border border-gray-300 rounded-md focus:ring-1 focus:ring-black transition duration-200 ease-in-out resize-none"
             />
           </div>
         </div>
 
-        {/* Subtotal Component */}
-        <div>
-          <Subtotal />
+        <div className="w-full lg:w-1/2 space-y-8">
+          <h2 className="text-2xl md:text-4xl font-semibold text-black">Order Summary</h2>
+          <div className="bg-gray-50 p-6 rounded-lg">
+            <div className="space-y-4">
+              {cartItems.map((item) => (
+                <div key={item.id} className="flex items-center space-x-4">
+                  <div className="relative">
+                    <Image
+                      src={item.imageUrl}
+                      alt={item.name}
+                      width={80}
+                      height={80}
+                      className="rounded-md"
+                    />
+                    <span className="absolute top-0 right-0 bg-gray-200 text-xs font-bold px-2 py-1 rounded-full">
+                      {item.quantity}
+                    </span>
+                  </div>
+                  <div className="flex-grow">
+                    <h3 className="text-sm font-medium">{item.name}</h3>
+                    <p className="text-sm text-gray-500">
+                     {item.color && `Color: ${item.color}`}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                   
+                      <p className="text-sm font-medium">Rs. {(item.price * item.quantity)}</p>
+                    
+                  </div>
+                </div>
+              ))}
+              <div className="border-t pt-4 mt-4">
+                <div className="flex justify-between items-center text-gray-700">
+                  <span>Subtotal</span>
+                  <span className="font-medium">Rs. {totalPrice}</span>
+                </div>
+                <div className="flex justify-between items-center text-gray-700 mt-2">
+                  <span>Shipping</span>
+                  <span className="font-medium">Rs. {shippingCost}</span>
+                </div>
+                <div className="flex justify-between items-center text-lg font-bold mt-4">
+                  <span>Total</span>
+                  <span className="text-black">Rs. {finalTotalPrice}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-lg font-medium text-gray-900">Payment Method</h3>
+            <div className="space-y-2">
+              {["easypaisa", "jazzcash", "bankTransfer"].map((method) => (
+                <div key={method} className="flex items-center">
+                  <input
+                    {...register("paymentMethod")}
+                    type="radio"
+                    id={method}
+                    value={method}
+                    className="w-4 h-4 text-black focus:ring-black border-gray-300"
+                  />
+                  <label htmlFor={method} className="ml-3 block text-sm font-medium text-gray-700 capitalize">
+                    {method.replace(/([A-Z])/g, " $1").trim()}
+                  </label>
+                </div>
+              ))}
+            </div>
+            {errors.paymentMethod && <p className="text-red-500 text-sm">{errors.paymentMethod.message}</p>}
+          </div>
+
+          <p className="text-sm text-gray-500">
+            Your personal data will be used to process your order, support your experience throughout this website, and
+            for other purposes described in our <span className="font-semibold">privacy policy</span>.
+          </p>
+
+          <button
+            type="submit"
+            className="w-full bg-white text-black py-2 px-4 rounded-full text-lg font-semibold hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black border-black border transition-all duration-300 ease-in-out transform"
+          >
+            Place Order
+          </button>
         </div>
       </form>
     </section>
-  );
-};
+  )
+}
 
-export default Billing;
+export default Billing

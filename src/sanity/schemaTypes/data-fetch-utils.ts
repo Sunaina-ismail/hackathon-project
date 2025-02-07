@@ -6,12 +6,6 @@ export const fetchProductBySlug = async (slug: string) => {
     const product = await client.fetch(allProductsDetailQuery, { slug });
     return product;
   };
-  
-
-
-
-
-
 export const allProductsQuery = `*[_type == "product"]{
   _id,
   productName,

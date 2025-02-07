@@ -4,7 +4,7 @@ import React from 'react'
 const Featured = () => {
   return (
     <div className="py-10 px-4 md:px-10 md:mt-10">
-    <div className="py-4 font-semibold text-xl md:text-2xl">
+    <div className="py-4 font-bold text-xl md:text-3xl">
       <h2>Featured</h2>
       </div>
 
@@ -22,7 +22,7 @@ const Featured = () => {
         </div>
         
         
-        <h1 className="text-lg sm:text-xl md:text-4xl font-semibold text-center leading-tight">
+        <h1 className="text-lg sm:text-xl md:text-4xl font-bold text-center ">
           STEP INTO WHAT FEELS GOOD
         </h1>
 
@@ -32,7 +32,7 @@ const Featured = () => {
         
   
         <div className="flex items-center gap-y-4 gap-x-4 ">
-          <Link href={'/Snkrs'}><button className="px-3 sm:px-5 py-2 sm:py-3 md:px-6 md:py-3 hover:text-white bg-white hover:bg-black bg-text-white border-black border  rounded-full font-medium  transition">
+          <Link href={'/Allproducts'}><button className="px-3 sm:px-5 py-2 sm:py-3 md:px-6 md:py-3 hover:text-white bg-white hover:bg-black bg-text-white border-black border  rounded-full font-medium  transition">
             Find Your Shoe
           </button>
           </Link>

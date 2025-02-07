@@ -48,11 +48,16 @@ export default function Bestair() {
   return (
     <section className="px-4 md:px-6">
     <div className="mb-4">
-      <h1 className="text-2xl font-semibold">Best of Air Max</h1>
+      <h1 className="text-xl md:text-3xl font-bold">Best of Air Max</h1>
     </div>
   
    
-    <div className="flex overflow-x-auto space-x-4 scrollbar-thumb-gray-500 scrollbar-track-gray-300 scrollbar-thin">
+    <div className="flex overflow-x-scroll snap-x snap-mandatory space-x-4 scrollbar-thumb-gray-500 scrollbar-track-gray-300 scrollbar-thin"
+      style={{
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
+      }}
+      >
       {bestAirProducts.length > 0 ? (
         bestAirProducts.map((product, index) => (
           <div
@@ -68,8 +73,8 @@ export default function Bestair() {
   height={400}
   className="rounded-md"
   placeholder="blur"
-  blurDataURL={product.image} // Optional: Add a small image URL or base64 string
-  loading="lazy" // Ensure lazy loading
+  blurDataURL={product.image} 
+  loading="lazy" 
 />
               </div>
               <h3 className="font-semibold text-lg">{product.productName}</h3>

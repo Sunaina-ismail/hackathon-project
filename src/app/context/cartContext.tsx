@@ -1,103 +1,152 @@
-'use client';
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
-interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-  color: string;
-  imageUrl: string;
-  inventory: number; 
+
+"use client"
+import type React from "react"
+import { createContext, useContext, useReducer, useEffect, type ReactNode, useMemo } from "react"
+
+type CartItem = {
+  id: string
+  name: string
+  price: number
+  quantity: number
+  imageUrl: string
+  color?: string
+  inventory: number
 }
 
 interface CartContextType {
-  cartItems: CartItem[];
-  addToCart: (item: CartItem) => void;
-  removeFromCart: (id: string) => void;
-  clearCart: () => void;
-  updateQuantity: (id: string, quantity: number) => void; // Method to update quantity
+  cartItems: CartItem[]
+  addItem: (item: CartItem) => void
+  removeItem: (id: string) => void
+  incrementItem: (id: string) => void
+  decrementItem: (id: string) => void
+  totalPrice: number
+  totalItems: number
+  cartItemsNumber: number
+  clearCart: () => void
+  cartItemsCount: number
+  subtotal: number
 }
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+const CartContext = createContext<CartContextType | null>(null)
 
-export const useCart = () => {
-  const context = useContext(CartContext);
-  if (!context) throw new Error("useCart must be used within a CartProvider");
-  return context;
-};
+type CartAction =
+  | { type: "ADD_ITEM"; payload: CartItem }
+  | { type: "REMOVE_ITEM"; payload: string }
+  | { type: "INCREMENT_ITEM"; payload: string }
+  | { type: "DECREMENT_ITEM"; payload: string }
+  | { type: "CLEAR_CART" }
 
-export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
-  useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      setCartItems(JSON.parse(storedCart));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-  }, [cartItems]);
-
-  const addToCart = (item: CartItem) => {
-    setCartItems((prev) => {
-      const existingItem = prev.find((cartItem) => cartItem.id === item.id);
-
+const reducer = (state: CartItem[], action: CartAction): CartItem[] => {
+  switch (action.type) {
+    case "ADD_ITEM":
+      const existingItem = state.find((item) => item.id === action.payload.id)
       if (existingItem) {
-        const newQuantity = existingItem.quantity + item.quantity;
-        if (newQuantity <= item.inventory) {
-          return prev.map((cartItem) =>
-            cartItem.id === item.id
-              ? { ...cartItem, quantity: newQuantity }
-              : cartItem
-          );
-        } else {
-          alert(`Limited stock! Only ${item.inventory} items available.`);
-          return prev;
-        }
+        return state.map((item) =>
+          item.id === action.payload.id ? { ...item, quantity: item.quantity + action.payload.quantity } : item,
+        )
       }
+      return [
+        ...state,
+        {
+          ...action.payload,
+         price:action.payload.price,
+        },
+      ]
+    case "REMOVE_ITEM":
+      return state.filter((item) => item.id !== action.payload)
+    case "INCREMENT_ITEM":
+      return state.map((item) =>
+        item.id === action.payload && item.quantity < item.inventory ? { ...item, quantity: item.quantity + 1 } : item,
+      )
+    case "DECREMENT_ITEM":
+      return state.map((item) =>
+        item.id === action.payload && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item,
+      )
+    case "CLEAR_CART":
+      return []
+    default:
+      return state
+  }
+}
 
-      if (item.quantity <= item.inventory) {
-        return [...prev, item];
-      } else {
-        alert(`Limited stock! Only ${item.inventory} items available.`);
-        return prev;
-      }
-    });
-  };
+const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [cartItems, dispatch] = useReducer(reducer, [])
 
-  const updateQuantity = (id: string, quantity: number) => {
-    setCartItems((prev) => {
-      const item = prev.find((cartItem) => cartItem.id === id);
-      if (item) {
-        if (quantity <= item.inventory) {
-          return prev.map((cartItem) =>
-            cartItem.id === id ? { ...cartItem, quantity } : cartItem
-          );
-        } else {
-          alert(`Limited stock! Only ${item.inventory} items available.`);
-          return prev;
-        }
-      }
-      return prev;
-    });
-  };
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cartItems")
+    if (storedCart) {
+      JSON.parse(storedCart).forEach((item: CartItem) => dispatch({ type: "ADD_ITEM", payload: item }))
+    }
+  }, [])
 
-  const removeFromCart = (id: string) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
-  };
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems))
+  }, [cartItems])
+
+  const addItem = (item: CartItem) => {
+    dispatch({ type: "ADD_ITEM", payload: item })
+  }
+
+  const removeItem = (id: string) => {
+    dispatch({ type: "REMOVE_ITEM", payload: id })
+  }
+
+  const incrementItem = (id: string) => {
+    dispatch({ type: "INCREMENT_ITEM", payload: id })
+  }
+
+  const decrementItem = (id: string) => {
+    dispatch({ type: "DECREMENT_ITEM", payload: id })
+  }
 
   const clearCart = () => {
-    setCartItems([]);
-  };
+    dispatch({ type: "CLEAR_CART" })
+  }
 
-  return (
-    <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, clearCart, updateQuantity }}
-    >
-      {children}
-    </CartContext.Provider>
-  );
-};
+  const subtotal = useMemo(() => {
+    return cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
+  }, [cartItems])
+
+  const discountedSubtotal = useMemo(() => {
+    return cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
+  }, [cartItems])
+
+  const totalSavings = useMemo(() => {
+    return subtotal - discountedSubtotal
+  }, [subtotal, discountedSubtotal])
+
+  console.log(totalSavings)
+
+  const totalItems = useMemo(() => {
+    return cartItems.reduce((acc, item) => acc + item.quantity, 0)
+  }, [cartItems])
+
+  const cartItemsNumber = cartItems.length
+
+  const value: CartContextType = {
+    cartItems,
+    addItem,
+    removeItem,
+    incrementItem,
+    decrementItem,
+    totalPrice: discountedSubtotal,
+    totalItems,
+    cartItemsNumber,
+    clearCart,
+    cartItemsCount: totalItems,
+    subtotal,
+  }
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>
+}
+
+const useCart = () => {
+  const context = useContext(CartContext)
+  if (context === null) {
+    throw new Error("useCart must be used within a CartProvider")
+  }
+  return context
+}
+
+export { CartProvider, useCart }

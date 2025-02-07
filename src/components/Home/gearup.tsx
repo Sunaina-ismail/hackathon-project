@@ -41,32 +41,36 @@ export default function GearUp() {
 
   return (
     <section className="my-16 md:my-24 px-4 sm:px-6 lg:px-10">
-    <div className="mb-2">
-      <h2 className="text-xl md:text-2xl font-semibold">Gear Up</h2>
+      <div className="mb-2">
+        <h2 className="text-xl md:text-3xl font-bold">Gear Up</h2>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {gearUpProducts.length > 0 ? (
           gearUpProducts.map((product, index) => (
-            <div key={index} className="p-2">
-          
+            <div key={index} className="p-2 group">
               <Link href={`/product/${product.slug}`}>
-                <div className="py-2 flex items-center justify-center cursor-pointer">
-                <Image
-  src={product.image}
-  alt={product.slug}
-  width={400}
-  height={400}
-  className="rounded-md"
-  placeholder="blur"
-  blurDataURL={product.image} // Optional: Add a small image URL or base64 string
-  loading="lazy" // Ensure lazy loading
-/>
-
+                <div className="py-2 flex items-center justify-center cursor-pointer overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.slug}
+                    width={400}
+                    height={400}
+                    className="rounded-md transition-transform duration-300 group-hover:scale-105"
+                    placeholder="blur"
+                    blurDataURL={product.image}
+                    loading="lazy"
+                  />
                 </div>
-                <h3 className="font-medium text-lg">{product.productName}</h3>
-                <span className="block text-sm text-gray-500">{product.category}</span>
-                <p className="font-bold text-gray-800">Rs.{product.price}</p>
+                <h3 className="font-medium text-lg mt-2 transition-colors duration-300 group-hover:text-blue-600">
+                  {product.productName}
+                </h3>
+                <span className="block text-sm text-gray-500 transition-colors duration-300 group-hover:text-gray-700">
+                  {product.category}
+                </span>
+                <p className="font-bold text-gray-800 transition-colors duration-300 group-hover:text-black">
+                  Rs.{product.price}
+                </p>
               </Link>
             </div>
           ))
