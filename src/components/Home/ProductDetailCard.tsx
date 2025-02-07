@@ -48,7 +48,7 @@ const ProductDetailCard = ({
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-between px-4 sm:px-8 md:px-20 py-24">
+    <div className="flex flex-col md:flex-row justify-between px-4 sm:px-8 md:px-20 py-28">
    
       <div className="w-full md:w-1/2 flex justify-center items-center">
         <Image

@@ -4,7 +4,7 @@ const ContactUs = () => {
       <div className="min-h-screen flex py-20 md:py-24 items-center justify-center">
         <div className="flex flex-col lg:flex-row mx-auto max-w-5xl w-full">
           
-          <div className="w-full lg:w-1/2 p-8">
+          <div className="w-full lg:w-1/2 p-6 md:p-8">
             <h2 className="text-3xl font-bold text-black mb-6">Get in Touch</h2>
             <div className="space-y-6">
               <div>

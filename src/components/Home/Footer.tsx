@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import React from 'react';
-import { FaFacebook, FaInstagram, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
+import { FaGithub,  FaLinkedinIn } from 'react-icons/fa';
 import { IoLocationOutline } from 'react-icons/io5';
 
 const Footer = () => {
@@ -39,10 +39,10 @@ const Footer = () => {
        
 
         <div className="flex justify-start lg:justify-end items-start gap-4">
-          <FaTwitter className="text-lg cursor-pointer hover:text-gray-400" />
-          <FaFacebook className="text-lg cursor-pointer hover:text-gray-400" />
+         
           <FaLinkedinIn className="text-lg cursor-pointer hover:text-gray-400" />
-          <FaInstagram className="text-lg cursor-pointer hover:text-gray-400" />
+          <FaGithub className="text-lg cursor-pointer hover:text-gray-400" />
+         
         </div>
       </div>
 

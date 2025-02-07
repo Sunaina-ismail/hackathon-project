@@ -4,9 +4,9 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className=" min-h-screen  flex flex-col items-center justify-center px-6 py-20">
+    <div className=" min-h-screen bg-red-300  flex flex-col items-center justify-center md:px-6 py-20">
       <div className="max-w-5xl flex flex-col lg:flex-row items-center  overflow-hidden">
-        <div className="lg:w-1/2 p-16">
+        <div className="lg:w-1/2 p-6 md:p-16">
           <h1 className="text-4xl font-bold text-gray-800 mb-4 text-center lg:text-left">
             Elevate Your Game, Define Your Style
           </h1>
