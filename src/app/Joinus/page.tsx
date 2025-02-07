@@ -79,7 +79,7 @@ const Joinus = () => {
           </option>
         </select>
 
-     
+    
         <div className="flex flex-row  gap-5 text-[#8D8D8D] mt-3 ">
           <div className="border-[#E5E5E5] rounded-md py-4 border-[2px] w-full sm:w-1/2 text-center text-text-secondary-gray">Male</div>
           <div className="border-[#E5E5E5] rounded-md py-4 border-[2px] w-full sm:w-1/2 text-center text-text-secondary-gray">Female</div>

@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
   try {
     const { customerData, orderData, address } = await req.json();
 
-    const trackingNumber = uuidv4().replace(/-/g, "").substring(0, 8); // Unique tracking number
+    const trackingNumber = uuidv4().replace(/-/g, "").substring(0, 8); 
     const createdAt = new Date().toISOString();
     const estimatedDeliveryDate = new Date();
     estimatedDeliveryDate.setDate(new Date().getDate() + 10);

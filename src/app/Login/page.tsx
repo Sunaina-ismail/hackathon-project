@@ -20,7 +20,6 @@ const Login = () => {
           placeholder="Email Address"
         />
         
-
         <input
           className=" sm:w-full border-[#E5E5E5] rounded-md mb-3  px-3 py-2 border-[2px] placeholder:text-text-secondary-gray sm:text-sm"
           type="text"

@@ -15,5 +15,4 @@ const Checkout = () => {
     </section>
   )
 }
-
 export default Checkout

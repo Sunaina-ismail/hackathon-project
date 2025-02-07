@@ -39,7 +39,7 @@ const PrivacyPolicy = () => {
           <li>Ensure the security of our website and prevent fraud.</li>
         </ul>
       </section>
-
+      
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">How We Protect Your Information</h2>
         <p>

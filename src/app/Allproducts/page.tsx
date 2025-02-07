@@ -74,7 +74,6 @@ export default function AllProducts() {
           </button>
         </div>
       </div>
-
       <div className="flex flex-col md:flex-row flex-1">
         <FilterSidebar
           categories={categories}

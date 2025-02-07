@@ -18,7 +18,6 @@ const Delivery = () => {
         </ul>
 
        
-
         <h2 className="text-xl font-semibold mt-6 mb-4">Delivery Charges</h2>
         <p className="text-gray-700">
           Delivery charges vary based on your location and delivery option selected at checkout. Final charges will be displayed before completing the payment.

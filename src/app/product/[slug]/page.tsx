@@ -17,7 +17,7 @@ const Product = ({ params }: ProductDetailsProps) => {
   const [slug, setSlug] = useState<string>("");
 
   useEffect(() => {
-    // Extract the slug from params when the component mounts
+    
     const getSlug = async () => {
       const { slug } = await params;
       setSlug(slug);

@@ -73,7 +73,6 @@ export default function Cart() {
           ))}
         </div>
 
-        {/* Summary Section */}
         <div className="w-full lg:w-1/3 px-4 sm:px-6 md:px-10 py-16 md:py-0 md:ml-10 lg:mt-0">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Summary</h2>
           <div className="mt-2">

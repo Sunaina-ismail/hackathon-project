@@ -111,7 +111,7 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const discountedSubtotal = useMemo(() => {
     return cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
   }, [cartItems])
-
+  
   const totalSavings = useMemo(() => {
     return subtotal - discountedSubtotal
   }, [subtotal, discountedSubtotal])
